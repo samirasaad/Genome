@@ -33,7 +33,7 @@ export function AsideMenuList({ layoutProps }) {
         {/*end::1 Level*/}
 
         {/*begin::1 Level*/}
-        <li
+        {/* <li
           className={`menu-item ${getMenuItemActive("/builder", false)}`}
           aria-haspopup="true"
         >
@@ -43,15 +43,15 @@ export function AsideMenuList({ layoutProps }) {
             </span>
             <span className="menu-text">Layout Builder</span>
           </NavLink>
-        </li>
+        </li> */}
         {/*end::1 Level*/}
 
         {/* Components */}
         {/* begin::section */}
-        <li className="menu-section ">
+        {/* <li className="menu-section ">
           <h4 className="menu-text">Components</h4>
           <i className="menu-icon flaticon-more-v2"></i>
-        </li>
+        </li> */}
         {/* end:: section */}
 
         {/* Material-UI */}
@@ -1007,7 +1007,7 @@ export function AsideMenuList({ layoutProps }) {
                   <i className="menu-arrow" />
                   <ul className="menu-subnav">
                     {/*begin::3 Level*/}
-                    <li
+                    {/* <li
                       className={`menu-item ${getMenuItemActive(
                         "/google-material/layout/box"
                       )}`}
@@ -1022,11 +1022,11 @@ export function AsideMenuList({ layoutProps }) {
                         </i>
                         <span className="menu-text">Box</span>
                       </NavLink>
-                    </li>
+                    </li> */}
                     {/*end::3 Level*/}
 
                     {/*begin::3 Level*/}
-                    <li
+                    {/* <li
                       className={`menu-item ${getMenuItemActive(
                         "/google-material/layout/container"
                       )}`}
@@ -1041,11 +1041,11 @@ export function AsideMenuList({ layoutProps }) {
                         </i>
                         <span className="menu-text">Container</span>
                       </NavLink>
-                    </li>
+                    </li> */}
                     {/*end::3 Level*/}
 
                     {/*begin::3 Level*/}
-                    <li
+                    {/* <li
                       className={`menu-item ${getMenuItemActive(
                         "/google-material/layout/grid"
                       )}`}
@@ -1060,11 +1060,11 @@ export function AsideMenuList({ layoutProps }) {
                         </i>
                         <span className="menu-text">Grid</span>
                       </NavLink>
-                    </li>
+                    </li> */}
                     {/*end::3 Level*/}
 
                     {/*begin::3 Level*/}
-                    <li
+                    {/* <li
                       className={`menu-item ${getMenuItemActive(
                         "/google-material/layout/grid-list"
                       )}`}
@@ -1079,11 +1079,11 @@ export function AsideMenuList({ layoutProps }) {
                         </i>
                         <span className="menu-text">Grid list</span>
                       </NavLink>
-                    </li>
+                    </li> */}
                     {/*end::3 Level*/}
 
                     {/*begin::3 Level*/}
-                    <li
+                    {/* <li
                       className={`menu-item ${getMenuItemActive(
                         "/google-material/layout/hidden"
                       )}`}
@@ -1098,7 +1098,7 @@ export function AsideMenuList({ layoutProps }) {
                         </i>
                         <span className="menu-text">Hidden</span>
                       </NavLink>
-                    </li>
+                    </li> */}
                     {/*end::3 Level*/}
                   </ul>
                 </div>
@@ -1111,7 +1111,7 @@ export function AsideMenuList({ layoutProps }) {
 
         {/* Bootstrap */}
         {/*begin::1 Level*/}
-        <li
+        {/* <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
             "/react-bootstrap",
             true
@@ -1125,21 +1125,21 @@ export function AsideMenuList({ layoutProps }) {
             </span>
             <span className="menu-text">Bootstrap</span>
             <i className="menu-arrow" />
-          </NavLink>
-          <div className="menu-submenu ">
+          </NavLink> */}
+          {/* <div className="menu-submenu ">
             <ul className="menu-subnav">
-              <ul className="menu-subnav">
-                <li
+              <ul className="menu-subnav"> */}
+                {/* <li
                   className="menu-item  menu-item-parent"
                   aria-haspopup="true"
                 >
                   <span className="menu-link">
                     <span className="menu-text">Bootstrap</span>
                   </span>
-                </li>
+                </li> */}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/alert"
                   )}`}
@@ -1151,11 +1151,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Alerts</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/badge"
                   )}`}
@@ -1167,11 +1167,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Badge</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/breadcrumb"
                   )}`}
@@ -1186,11 +1186,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Breadcrumb</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/buttons"
                   )}`}
@@ -1202,11 +1202,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Buttons</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/button-group"
                   )}`}
@@ -1221,11 +1221,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Button Group</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/cards"
                   )}`}
@@ -1237,11 +1237,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Cards</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/carousel"
                   )}`}
@@ -1253,11 +1253,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Carousel</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/dropdowns"
                   )}`}
@@ -1272,11 +1272,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Dropdowns</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/forms"
                   )}`}
@@ -1288,11 +1288,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Forms</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/input-group"
                   )}`}
@@ -1307,11 +1307,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Input Group</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/images"
                   )}`}
@@ -1323,11 +1323,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Images</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/figures"
                   )}`}
@@ -1339,11 +1339,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Figures</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/jumbotron"
                   )}`}
@@ -1358,11 +1358,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Jumbotron</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/list-group"
                   )}`}
@@ -1377,11 +1377,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">List group</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/modal"
                   )}`}
@@ -1393,11 +1393,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Modal</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/navs"
                   )}`}
@@ -1409,11 +1409,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Navs</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/navbar"
                   )}`}
@@ -1425,11 +1425,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Navbar</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/overlays"
                   )}`}
@@ -1441,11 +1441,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Overlays</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/pagination"
                   )}`}
@@ -1460,11 +1460,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Pagination</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/popovers"
                   )}`}
@@ -1476,11 +1476,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Popovers</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/progress"
                   )}`}
@@ -1492,11 +1492,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Progress</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/spinners"
                   )}`}
@@ -1508,11 +1508,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Spinners</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/table"
                   )}`}
@@ -1524,11 +1524,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Table</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/tabs"
                   )}`}
@@ -1540,11 +1540,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Tabs</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/tooltips"
                   )}`}
@@ -1556,11 +1556,11 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Tooltips</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
 
                 {/*begin::2 Level*/}
-                <li
+                {/* <li
                   className={`menu-item ${getMenuItemActive(
                     "/react-bootstrap/toasts"
                   )}`}
@@ -1572,12 +1572,12 @@ export function AsideMenuList({ layoutProps }) {
                     </i>
                     <span className="menu-text">Toasts</span>
                   </NavLink>
-                </li>
+                </li> */}
                 {/*end::2 Level*/}
-              </ul>
+              {/* </ul>
             </ul>
           </div>
-        </li>
+        </li> */}
         {/*end::1 Level*/}
 
         {/* Applications */}

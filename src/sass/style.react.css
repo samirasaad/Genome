@@ -39796,7 +39796,7 @@ a.text-hover-primary:hover i {
 .text-hover-primary:hover .svg-icon svg g [fill],
 a.text-hover-primary:hover .svg-icon svg g [fill] {
   transition: fill 0.3s ease;
-  fill: #3699ff;
+  fill: white;
 }
 .text-hover-primary:hover .svg-icon svg:hover g [fill],
 a.text-hover-primary:hover .svg-icon svg:hover g [fill] {
@@ -39815,7 +39815,7 @@ a.text-hover-primary:hover .svg-icon svg:hover g [fill] {
 .hoverable:hover .text-hover-primary .svg-icon svg g [fill],
 .hoverable:hover a.text-hover-primary .svg-icon svg g [fill] {
   transition: fill 0.3s ease;
-  fill: #3699ff !important;
+  fill: white !important;
 }
 .hoverable:hover .text-hover-primary .svg-icon svg:hover g [fill],
 .hoverable:hover a.text-hover-primary .svg-icon svg:hover g [fill] {
@@ -41584,13 +41584,13 @@ button {
 .nav .show > .nav-link .nav-text {
   transition: color 0.15s ease, background-color 0.15s ease,
     border-color 0.15s ease, box-shadow 0.15s ease;
-  color: #3699ff;
+  color: white;
 }
 .nav .nav-link.active .nav-icon .svg-icon svg g [fill],
 .nav .nav-link:hover:not(.disabled) .nav-icon .svg-icon svg g [fill],
 .nav .show > .nav-link .nav-icon .svg-icon svg g [fill] {
   transition: fill 0.3s ease;
-  fill: #3699ff;
+  fill: white;
 }
 .nav .nav-link.active .nav-icon .svg-icon svg:hover g [fill],
 .nav .nav-link:hover:not(.disabled) .nav-icon .svg-icon svg:hover g [fill],
@@ -74976,7 +74976,7 @@ body {
 .aside-menu .menu-nav > .menu-item > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item > .menu-link .menu-text {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: none;
 }
 .aside-menu .menu-nav > .menu-item > .menu-heading .menu-icon,
@@ -79482,15 +79482,15 @@ body {
 }
 @media (min-width: 992px) {
   .brand {
-    background-color: #1a1a27;
+    background-color: #6a2a53;
     box-shadow: none;
   }
   .brand .btn i {
-    color: #494b74;
+    color: white;
   }
   .brand .btn .svg-icon svg g [fill] {
     transition: fill 0.3s ease;
-    fill: #494b74;
+    fill: white;
   }
   .brand .btn .svg-icon svg:hover g [fill] {
     transition: fill 0.3s ease;
@@ -79511,7 +79511,7 @@ body {
 }
 @media (max-width: 991.98px) {
   .header-mobile {
-    background-color: #1a1a27;
+    background-color: #6a2a53;
   }
   .header-mobile .burger-icon span,
   .header-mobile .burger-icon span:after,
@@ -79551,7 +79551,7 @@ body {
   }
 }
 .aside {
-  background-color: #1e1e2d;
+  background-color: #6a2a53;
 }
 .aside .aside-menu.ps > .ps__rail-x {
   background-color: transparent;
@@ -79590,7 +79590,7 @@ body {
   opacity: 1;
 }
 .aside-menu {
-  background-color: #1e1e2d;
+  background-color: #6a2a53;
 }
 .aside-menu .menu-nav > .menu-item > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item > .menu-link .menu-text {
@@ -79598,7 +79598,7 @@ body {
 }
 .aside-menu .menu-nav > .menu-item > .menu-heading .menu-icon,
 .aside-menu .menu-nav > .menu-item > .menu-link .menu-icon {
-  color: #494b74;
+  color: white;
 }
 .aside-menu
   .menu-nav
@@ -79617,7 +79617,7 @@ body {
   g
   [fill] {
   transition: fill 0.3s ease;
-  fill: #494b74;
+  fill: white;
 }
 .aside-menu
   .menu-nav
@@ -79672,7 +79672,7 @@ body {
 }
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link .menu-text {
@@ -79754,7 +79754,7 @@ body {
 }
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-link .menu-text {
@@ -79836,7 +79836,7 @@ body {
 }
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text {
@@ -79926,7 +79926,7 @@ body {
   .menu-nav
   > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
   > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu
   .menu-nav
@@ -80028,7 +80028,7 @@ body {
   color: #fff;
 }
 .aside-menu .menu-nav > .menu-item > .menu-arrow {
-  color: #1e1e2d;
+  color: #6a2a53;
 }
 .aside-menu .menu-nav > .menu-section .menu-icon,
 .aside-menu .menu-nav > .menu-section .menu-text {
@@ -80067,7 +80067,7 @@ body {
   .menu-item
   > .menu-link
   .menu-icon {
-  color: #494b74;
+  color: white;
 }
 .aside-menu
   .menu-nav
@@ -80090,7 +80090,7 @@ body {
   g
   [fill] {
   transition: fill 0.3s ease;
-  fill: #494b74;
+  fill: white;
 }
 .aside-menu
   .menu-nav
@@ -80179,7 +80179,7 @@ body {
   .menu-submenu
   .menu-item.menu-item-open
   > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu
   .menu-nav
@@ -80323,7 +80323,7 @@ body {
   .menu-submenu
   .menu-item.menu-item-here
   > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu
   .menu-nav
@@ -80451,7 +80451,7 @@ body {
   .menu-submenu
   .menu-item.menu-item-active
   > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu
   .menu-nav
@@ -80599,7 +80599,7 @@ body {
   .menu-submenu
   .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
   > .menu-link {
-  background-color: #1b1b28;
+  background-color: #532242;
 }
 .aside-menu
   .menu-nav
@@ -82364,15 +82364,15 @@ body {
 }
 @media (min-width: 992px) {
   .brand-dark .brand {
-    background-color: #1a1a27;
+    background-color: #6a2a53;
     box-shadow: none;
   }
   .brand-dark .brand .btn i {
-    color: #494b74;
+    color: white;
   }
   .brand-dark .brand .btn .svg-icon svg g [fill] {
     transition: fill 0.3s ease;
-    fill: #494b74;
+    fill: white;
   }
   .brand-dark .brand .btn .svg-icon svg:hover g [fill] {
     transition: fill 0.3s ease;
@@ -82393,7 +82393,7 @@ body {
 }
 @media (max-width: 991.98px) {
   .brand-dark .header-mobile {
-    background-color: #1a1a27;
+    background-color: #6a2a53;
   }
   .brand-dark .header-mobile .burger-icon span,
   .brand-dark .header-mobile .burger-icon span:after,
