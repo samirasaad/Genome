@@ -1,0 +1,20 @@
+.user-drop-down {
+  button {
+    background-color: transparent;
+    border: none;
+    &:hover {
+      background-color: transparent;
+    }
+    &.dropdown-toggle:after {
+      margin-right: 0.8em;
+    }
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .user-drop-down {
+    .dropdown-item {
+      text-align: center;
+    }
+  }
+}
