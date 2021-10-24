@@ -22,8 +22,11 @@ export function Demo1Dashboard() {
         <div className="col-lg-6 col-xxl-4">
           <ListsWidget9 className="card-stretch gutter-b" />
         </div>
-
         <div className="col-lg-6 col-xxl-4">
+          <ListsWidget9 className="card-stretch gutter-b" />
+        </div>
+
+        {/* <div className="col-lg-6 col-xxl-4">
           <StatsWidget11
             className="card-stretch card-stretch-half gutter-b"
             symbolShape="circle"
@@ -54,7 +57,7 @@ export function Demo1Dashboard() {
         </div>
         <div className="col-lg-8">
           <AdvanceTablesWidget4 className="card-stretch gutter-b" />
-        </div>
+        </div> */}
       </div>
     </>
   );

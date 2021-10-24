@@ -263,7 +263,7 @@ a {
   --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffc107;
-  --green: #28a745;
+  --#24D7D3: #28a745;
   --teal: #20c997;
   --cyan: #17a2b8;
   --gray: #7e8299;
@@ -75405,6 +75405,7 @@ body {
 }
 .aside-menu .menu-nav > .menu-item > .menu-link {
   padding: 9px 25px;
+  border-right: 5px solid transparent;
 }
 .aside-menu
   .menu-nav
@@ -79701,6 +79702,7 @@ body {
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link .menu-text {
@@ -79783,6 +79785,7 @@ body {
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-link .menu-text {
@@ -79865,6 +79868,7 @@ body {
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading .menu-text,
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text {
@@ -79955,6 +79959,7 @@ body {
   > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
   > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu
   .menu-nav
@@ -80208,6 +80213,7 @@ body {
   .menu-item.menu-item-open
   > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu
   .menu-nav
@@ -80352,6 +80358,7 @@ body {
   .menu-item.menu-item-here
   > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu
   .menu-nav
@@ -80480,6 +80487,7 @@ body {
   .menu-item.menu-item-active
   > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu
   .menu-nav
@@ -80628,6 +80636,7 @@ body {
   .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
   > .menu-link {
   background-color: #532242;
+  border-right: 5px solid #24d7d3;
 }
 .aside-menu
   .menu-nav
