@@ -58,7 +58,7 @@ export function getInitLayoutConfig() {
           gray900: "#212121",
         },
       },
-      fontFamily: "Poppins",
+      fontFamily: "Cairo-Regular",
     },
     // == Page Splash Screen loading
     loader: {
