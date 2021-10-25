@@ -48,14 +48,14 @@ export function LanguageSelectorDropdown() {
             <div
               onClick={() =>
                 toggleLanguage(
-                  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
+                  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
                     .selectedLang === "en"
                     ? "ar"
                     : "en"
                 )
               }
             >
-              {JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
+              {JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
                 .selectedLang === "en" ? (
                 <span>ع</span>
               ) : (

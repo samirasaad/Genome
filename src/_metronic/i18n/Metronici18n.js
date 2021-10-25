@@ -31,7 +31,7 @@ export const updateDocumentLanguage = (lang) => {
   let langDirection = lang === "en" ? "ltr" : "rtl";
   htmlElem.setAttribute(
     "lang",
-    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
+    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
   );
   htmlElem.setAttribute("lang", lang);
   htmlElem.setAttribute("dir", langDirection);
