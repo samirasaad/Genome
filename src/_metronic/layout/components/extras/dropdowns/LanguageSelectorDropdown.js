@@ -4,37 +4,31 @@ import clsx from "clsx";
 import { Dropdown } from "react-bootstrap";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../../_helpers";
-import {
-  useLang,
-  setLanguage,
-  langauageToggler,
-  toggleLanguage,
-} from "../../../../i18n";
+import { useLang, toggleLanguage } from "../../../../i18n";
 import { DropdownTopbarItemToggler } from "../../../../_partials/dropdowns";
 import { I18N_CONFIG_KEY } from "../../../../../utilis/constants";
 import { useIntl } from "react-intl";
-
-const languages = [
-  {
-    lang: "en",
-    name: "English",
-    flag: toAbsoluteUrl("/media/svg/flags/226-united-states.svg"),
-  },
-  {
-    lang: "ar",
-    name: "arabic",
-    flag: toAbsoluteUrl("/media/svg/flags/195-france.svg"),
-  },
-];
+import { useSelector } from "react-redux";
 
 export function LanguageSelectorDropdown() {
   const intl = useIntl();
   const lang = useLang(); //user machine language
+  const storeLanguage = useSelector(({ lang }) => lang);
+
   return (
     <Dropdown drop="down" alignRight>
       <Dropdown.Toggle
         as={DropdownTopbarItemToggler}
         id="dropdown-toggle-my-cart"
+        onClick={() =>
+          toggleLanguage(
+            JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) &&
+              JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
+                .selectedLang === "en"
+              ? "ar"
+              : "en"
+          )
+        }
       >
         <OverlayTrigger
           placement="bottom"
@@ -45,22 +39,8 @@ export function LanguageSelectorDropdown() {
           }
         >
           <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-            <div
-              onClick={() =>
-                toggleLanguage(
-                  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
-                    .selectedLang === "en"
-                    ? "ar"
-                    : "en"
-                )
-              }
-            >
-              {JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
-                .selectedLang === "en" ? (
-                <span>ع</span>
-              ) : (
-                <span>En</span>
-              )}
+            <div>
+              {storeLanguage === "en" ? <span>ع</span> : <span>En</span>}
             </div>
             {/* <img
               className="h-25px w-25px rounded"

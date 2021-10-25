@@ -12,7 +12,6 @@ import { I18nProvider } from "../_metronic/i18n";
 import { LayoutSplashScreen, MaterialThemeProvider } from "../_metronic/layout";
 
 export default function App({ store, basename }) {
- 
 
   return (
     /* Provide Redux store */

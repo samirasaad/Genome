@@ -68,8 +68,6 @@ License: You must have a valid license purchased only from https://themes.getboo
       rel="stylesheet"
     />
   </head>
-  <!-- <body id="kt_body" direction="rtl" dir="rtl" style="direction: rtl">  RTL version body -->
-  <!-- Standard version of body -->
   <body id="kt_body">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
@@ -87,6 +85,14 @@ License: You must have a valid license purchased only from https://themes.getboo
       </svg>
     </div>
     <div id="layout-portal"></div>
+    <script>
+      var lang = JSON.parse(localStorage.getItem("i18nConfig")).selectedLang;
+      let htmlElem = document.querySelector("html");
+      let langDirection = lang === "en" ? "ltr" : "rtl";
+      htmlElem.setAttribute("lang", lang);
+      htmlElem.setAttribute("dir", langDirection);
+      htmlElem.style.direction = langDirection;
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"

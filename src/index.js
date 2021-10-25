@@ -30,23 +30,15 @@ import { MetronicI18nProvider, updateDocumentLanguage } from "./_metronic/i18n";
 import { I18N_CONFIG_KEY } from "./utilis/constants";
 
 // setting language on first intailzation
-if (
-  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) &&
-  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
-) {
-  updateDocumentLanguage(
-    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
-  );
-} else {
-  updateDocumentLanguage("en");
-}
-
-// dynamic import for style sheet rtl/ltr
-if (document.getElementsByTagName("html")[0].getAttribute("lang") === "ar") {
-  import("./sass/style.react.rtl.css").then((res) => {});
-} else {
-  import("./sass/style.react.css").then((res) => {});
-}
+// if (
+//   // JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) &&
+//   // JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
+//   store.getState().lang
+// ) {
+//   updateDocumentLanguage(store.getState().lang);
+// } else {
+//   updateDocumentLanguage("en");
+// }
 
 /**
  * Base URL of the website.
