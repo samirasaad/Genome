@@ -5,8 +5,10 @@ import { NavLink } from "react-router-dom";
 import SVG from "react-inlinesvg";
 import { toAbsoluteUrl, checkIsActive } from "../../../../_helpers";
 import DropDown from "./../../../../../app/components/DropDown/DropDown";
+import { FormattedMessage, useIntl } from "react-intl";
 
-export function HeaderMenu({ layoutProps }) {
+export function HeaderMenu({ layoutProps, role = "موظفة استقبال" }) {
+  const intl = useIntl();
   const location = useLocation();
   const getMenuItemActive = (url) => {
     return checkIsActive(location, url) ? "menu-item-active" : "";
@@ -24,7 +26,9 @@ export function HeaderMenu({ layoutProps }) {
             "/dashboard"
           )}`}
         >
-          <span className="menu-text">مرحبًا! موظفة الاستقبال</span>
+          <span className="menu-text">
+            {intl.formatMessage({ id: "HOME.HELLO" }, { role })}
+          </span>
           <div className=" d-md-flex d-block align-items-center">
             <div className="menu-text d-flex">
               <img src={"ytt"} />
