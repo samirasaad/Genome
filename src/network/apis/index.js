@@ -14,7 +14,10 @@ export const axiosInstance = axios.create({
 // Handle request process
 axiosInstance.interceptors.request.use(
   // return requestHandler(request);
-  config => { console.log(config) ;return config }
+  (config) => {
+    console.log(config);
+    return config;
+  }
 );
 
 // Handle response process

@@ -8,7 +8,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import * as _redux from "./redux";
-import store, { persistor } from "./redux/store";
+// import store, { persistor } from "./redux/store";
+import store from "./../src/store";
 import App from "./app/App";
 // import "./index.scss"; // Standard version
 // import "./sass/style.react.css"; // LTR version
@@ -29,7 +30,10 @@ import { MetronicI18nProvider, updateDocumentLanguage } from "./_metronic/i18n";
 import { I18N_CONFIG_KEY } from "./utilis/constants";
 
 // setting language on first intailzation
-if (JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang) {
+if (
+  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) &&
+  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
+) {
   updateDocumentLanguage(
     JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
   );
@@ -64,14 +68,18 @@ const { PUBLIC_URL } = process.env;
  *
  * @see https://github.com/axios/axios#interceptors
  */
-_redux.setupAxios(axios, store);
+// _redux.setupAxios(axios, store);
 
 ReactDOM.render(
   <MetronicI18nProvider>
     <MetronicLayoutProvider>
       <MetronicSubheaderProvider>
         <MetronicSplashScreenProvider>
-          <App store={store} persistor={persistor} basename={PUBLIC_URL} />
+          <App
+            store={store}
+            // persistor={persistor}
+            basename={PUBLIC_URL}
+          />
         </MetronicSplashScreenProvider>
       </MetronicSubheaderProvider>
     </MetronicLayoutProvider>

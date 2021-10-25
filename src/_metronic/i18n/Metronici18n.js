@@ -1,7 +1,9 @@
 import React, { createContext } from "react";
 import { useMemo } from "react";
 import { useContext } from "react";
+import { setCurrentLang } from "../../store/actions/Lang";
 import { I18N_CONFIG_KEY } from "../../utilis/constants";
+import store from "./../../store";
 
 const initialState = {
   selectedLang: "en",
@@ -23,16 +25,17 @@ function getConfig() {
 export function toggleLanguage(lang) {
   localStorage.setItem(I18N_CONFIG_KEY, JSON.stringify({ selectedLang: lang }));
   updateDocumentLanguage(lang);
-  window.location.reload();
+  store.dispatch(setCurrentLang(lang));
+  // window.location.reload();
 }
 
 export const updateDocumentLanguage = (lang) => {
   let htmlElem = document.querySelector("html");
-  let langDirection = lang === "en" ? "ltr" : "rtl";
-  htmlElem.setAttribute(
-    "lang",
-    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) && JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
-  );
+  let langDirection =
+    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) &&
+    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang === "en"
+      ? "ltr"
+      : "rtl";
   htmlElem.setAttribute("lang", lang);
   htmlElem.setAttribute("dir", langDirection);
   htmlElem.style.direction = langDirection;

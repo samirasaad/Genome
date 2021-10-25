@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { FormattedMessage, injectIntl } from "react-intl";
 import * as auth from "../_redux/authRedux";
 import { login } from "../_redux/authCrud";
+import { getTokkenRequest, loginRequest } from "../../../../store/actions/auth";
+import store from "../../../../store";
 
 /*
   INTL (i18n) docs:
@@ -71,20 +73,21 @@ function Login(props) {
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
       setTimeout(() => {
-        login(values.email, values.password)
-          .then(({ data: { accessToken } }) => {
-            disableLoading();
-            props.login(accessToken);
-          })
-          .catch(() => {
-            disableLoading();
-            setSubmitting(false);
-            setStatus(
-              intl.formatMessage({
-                id: "AUTH.VALIDATION.INVALID_LOGIN",
-              })
-            );
-          });
+        store.dispatch(loginRequest(values));
+        // login(values.email, values.password)
+        //   .then(({ data: { accessToken } }) => {
+        //     disableLoading();
+        //     props.login(accessToken);
+        //   })
+        //   .catch(() => {
+        //     disableLoading();
+        //     setSubmitting(false);
+        //     setStatus(
+        //       intl.formatMessage({
+        //         id: "AUTH.VALIDATION.INVALID_LOGIN",
+        //       })
+        //     );
+        //   });
       }, 1000);
     },
   });

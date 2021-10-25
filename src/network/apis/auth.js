@@ -1,20 +1,8 @@
 import { axiosInstance } from "./index";
 
 export const loginApi = async (data) => {
-  console.log(data)
-  return await axiosInstance.post(`api/auth/login`, {data,
-    handlerEnabled: true,
-  });
+  return await axiosInstance.post(
+    `https://smea-pc.ibtikar.sa/api/authentication/admin/login`,
+    { email: data.email, password: data.password, handlerEnabled: true }
+  );
 };
-// export const logoutApi = async () => {
-//   return await axiosInstance.post(`/authentication/logout`,{
-//     handlerEnabled: true,
-//   });
-// };
-
-// //GET FIREBASE TOKEN
-// export const firebaseApi = async () => {
-//   return await axiosInstance.get(`/firebase/auth`,{
-//     handlerEnabled: true,
-//   });
-// };
