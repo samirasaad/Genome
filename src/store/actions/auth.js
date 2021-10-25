@@ -5,7 +5,6 @@ export const logoutRequest = () => ({
 });
 
 export const loginRequest = (payload) => {
-  console.log(payload)
   return({
   type: types.GET_TOKEN_REQUEST,
   payload,

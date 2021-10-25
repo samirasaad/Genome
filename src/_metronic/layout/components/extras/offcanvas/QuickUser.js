@@ -41,7 +41,7 @@ export function QuickUser() {
             <div
               className="symbol-label"
               style={{
-                backgroundImage: `url(${user.pic})`,
+                backgroundImage: `url(${user && user.pic ? user.pic : ""})`,
               }}
             />
             <i className="symbol-badge bg-success" />
@@ -51,9 +51,9 @@ export function QuickUser() {
               href="#"
               className="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"
             >
-              {user.firstname} {user.lastname}
+              {user && user.firstname && user.firstname}{" "}
+              {user && user.lastname && user.lastname}
             </a>
-            <div className="text-muted mt-1">{user.occupation}</div>
             <div className="navi mt-2">
               <a className="navi-item cursor-pointer">
                 <span className="navi-link p-0 pb-2">
@@ -66,9 +66,9 @@ export function QuickUser() {
                       ></SVG>
                     </span>
                   </span>
-                  <span className="navi-text text-muted text-hover-primary">
+                  {/* <span className="navi-text text-muted text-hover-primary">
                     {user.email}
-                  </span>
+                  </span> */}
                 </span>
               </a>
             </div>

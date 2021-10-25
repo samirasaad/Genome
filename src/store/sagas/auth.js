@@ -1,17 +1,26 @@
 import { call, put } from "redux-saga/effects";
-import {
-  loginApi,
-} from "../../network/apis/auth";
+import { loginApi } from "../../network/apis/auth";
 // import { dispatchSnackbarError } from "../../utils/Shared";
 import { takeLatest } from "redux-saga/effects";
 import * as TYPES from "../types/auth";
-import History from './../../utilis/history';
+import History from "./../../utilis/history";
+import { loginReceive } from "../actions/auth";
 
 export function* loginSaga(action) {
   try {
     const response = yield call(loginApi, action.payload);
-    console.log(response);
-    History.push('/dashboard')
+    localStorage.setItem(
+      "persist:v713-demo1-auth",
+      JSON.stringify({
+        _persist: { version: -1, rehydrated: true },
+        authToken: "access-token-8f3ae836da744329a6f93bf20594b5cc",
+        user: "true",
+      })
+    );
+
+    localStorage.setItem("token", response.data.data.access_token);
+    yield put(loginReceive(response.data.data.access_token));
+    History.push("/dashboard");
   } catch (err) {
     console.log(err);
   }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
@@ -31,20 +31,20 @@ function Login(props) {
     email: Yup.string()
       .email("Wrong email format")
       .min(3, "Minimum 3 symbols")
-      .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+      .max(50, "Maximum 50 symbols"),
+    // .required(
+    //   intl.formatMessage({
+    //     id: "AUTH.VALIDATION.REQUIRED_FIELD",
+    //   })
+    // ),,
     password: Yup.string()
       .min(3, "Minimum 3 symbols")
-      .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+      .max(50, "Maximum 50 symbols"),
+    // .required(
+    //   intl.formatMessage({
+    //     id: "AUTH.VALIDATION.REQUIRED_FIELD",
+    //   })
+    // ),
   });
 
   const enableLoading = () => {
@@ -94,7 +94,6 @@ function Login(props) {
 
   return (
     <div className="login-form login-signin" id="kt_login_signin_form">
-      {/* begin::Head */}
       <div className="text-center mb-10 mb-lg-20">
         <h3 className="font-size-h1">
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
@@ -103,9 +102,6 @@ function Login(props) {
           Enter your username and password
         </p>
       </div>
-      {/* end::Head */}
-
-      {/*begin::Form*/}
       <form
         onSubmit={formik.handleSubmit}
         className="form fv-plugins-bootstrap fv-plugins-framework"
@@ -174,9 +170,8 @@ function Login(props) {
           </button>
         </div>
       </form>
-      {/*end::Form*/}
     </div>
   );
 }
 
-export default injectIntl(connect(null, auth.actions)(Login));
+export default withRouter(Login);

@@ -66,9 +66,9 @@ export default function CustomizedMenus() {
   };
 
   return (
-    <div class="dropdown user-drop-down">
+    <div className="dropdown user-drop-down">
       <button
-        class="d-flex align-items-center  dropdown-toggle"
+        className="d-flex align-items-center  dropdown-toggle"
         type="button"
         id="dropdownMenu2"
         data-bs-toggle="dropdown"
@@ -76,19 +76,19 @@ export default function CustomizedMenus() {
       >
         <UserAvatar width={39} height={39} />
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
         <li>
-          <button class="dropdown-item" type="button">
+          <button className="dropdown-item" type="button">
             Action
           </button>
         </li>
         <li>
-          <button class="dropdown-item" type="button">
+          <button className="dropdown-item" type="button">
             Another action
           </button>
         </li>
         <li>
-          <button class="dropdown-item" type="button">
+          <button className="dropdown-item" type="button">
             Something else here
           </button>
         </li>
