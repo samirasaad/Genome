@@ -3,7 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
 const UserAvatar = ({ width, height, src }) => {
-  console.log(src);
   return (
     <Stack direction="row" spacing={3}>
       <Avatar

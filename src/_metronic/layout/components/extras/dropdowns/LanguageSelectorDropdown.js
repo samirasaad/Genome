@@ -4,8 +4,14 @@ import clsx from "clsx";
 import { Dropdown } from "react-bootstrap";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../../_helpers";
-import { useLang, setLanguage } from "../../../../i18n";
+import {
+  useLang,
+  setLanguage,
+  langauageToggler,
+  toggleLanguage,
+} from "../../../../i18n";
 import { DropdownTopbarItemToggler } from "../../../../_partials/dropdowns";
+import { I18N_CONFIG_KEY } from "../../../../../utilis/constants";
 
 const languages = [
   {
@@ -14,34 +20,14 @@ const languages = [
     flag: toAbsoluteUrl("/media/svg/flags/226-united-states.svg"),
   },
   {
-    lang: "zh",
-    name: "Mandarin",
-    flag: toAbsoluteUrl("/media/svg/flags/015-china.svg"),
-  },
-  {
-    lang: "es",
-    name: "Spanish",
-    flag: toAbsoluteUrl("/media/svg/flags/128-spain.svg"),
-  },
-  {
-    lang: "ja",
-    name: "Japanese",
-    flag: toAbsoluteUrl("/media/svg/flags/063-japan.svg"),
-  },
-  {
-    lang: "de",
-    name: "German",
-    flag: toAbsoluteUrl("/media/svg/flags/162-germany.svg"),
-  },
-  {
-    lang: "fr",
-    name: "French",
+    lang: "ar",
+    name: "arabic",
     flag: toAbsoluteUrl("/media/svg/flags/195-france.svg"),
   },
 ];
 
 export function LanguageSelectorDropdown() {
-  const lang = useLang();
+  const lang = useLang(); //user machine language
   const currentLanguage = languages.find((x) => x.lang === lang);
   return (
     <Dropdown drop="down" alignRight>
@@ -56,17 +42,35 @@ export function LanguageSelectorDropdown() {
           }
         >
           <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-            <img
+            <div
+              onClick={() =>
+                toggleLanguage(
+                  JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
+                    .selectedLang === "en"
+                    ? "ar"
+                    : "en"
+                )
+              }
+            >
+              {JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
+                .selectedLang === "en" ? (
+                <span>ع</span>
+              ) : (
+                <span>En</span>
+              )}
+            </div>
+            {/* <img
               className="h-25px w-25px rounded"
               src={currentLanguage.flag}
               alt={currentLanguage.name}
-            />
+            /> */}
           </div>
         </OverlayTrigger>
       </Dropdown.Toggle>
       <Dropdown.Menu className="p-0 m-0 dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
-        <ul className="navi navi-hover py-4">
-          {languages.map((language) => (
+        {/* <ul className="navi navi-hover py-4"> */}
+
+        {/* {languages.map((language) => (
             <li
               key={language.lang}
               className={clsx("navi-item", {
@@ -75,7 +79,7 @@ export function LanguageSelectorDropdown() {
             >
               <a
                 href="#"
-                onClick={() => setLanguage(language.lang)}
+                onClick={() => toggleLanguage(language.lang)}
                 className="navi-link"
               >
                 <span className="symbol symbol-20 mr-3">
@@ -84,8 +88,8 @@ export function LanguageSelectorDropdown() {
                 <span className="navi-text">{language.name}</span>
               </a>
             </li>
-          ))}
-        </ul>
+          ))} */}
+        {/* </ul> */}
       </Dropdown.Menu>
     </Dropdown>
   );

@@ -23,24 +23,26 @@ import "react-datepicker/dist/react-datepicker.css";
 import {
   MetronicLayoutProvider,
   MetronicSplashScreenProvider,
-  MetronicSubheaderProvider
+  MetronicSubheaderProvider,
 } from "./_metronic/layout";
-import {MetronicI18nProvider} from "./_metronic/i18n";
+import { MetronicI18nProvider, updateDocumentLanguage } from "./_metronic/i18n";
+import { I18N_CONFIG_KEY } from "./utilis/constants";
 
-console.log(document.getElementsByTagName('html')[0].getAttribute('lang'))
-if (document.getElementsByTagName('html')[0].getAttribute('lang') === 'ar') {
-  // console.
-  import('./sass/style.react.rtl.css')
-  .then((res) => {
-     console.log('arabic',res);
-  });
-}else{
-  import('./sass/style.react.css').then(res=>{
-    console.log('en',res);
-
-  })
+// setting language on first intailzation
+if (JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang) {
+  updateDocumentLanguage(
+    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang
+  );
+} else {
+  updateDocumentLanguage("en");
 }
 
+// dynamic import for style sheet rtl/ltr
+if (document.getElementsByTagName("html")[0].getAttribute("lang") === "ar") {
+  import("./sass/style.react.rtl.css").then((res) => {});
+} else {
+  import("./sass/style.react.css").then((res) => {});
+}
 
 /**
  * Base URL of the website.

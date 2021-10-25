@@ -10,7 +10,7 @@ import Divider from "@mui/material/Divider";
 // import MoreHorizIcon from '@mui/icons-material/MoreHoriz';/
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import "./DropDown.scss";
-import UserAvatar from "../Avatar/UserAvatar";
+import UserAvatar from "../UserAvatar/UserAvatar";
 
 const StyledMenu = styled((props) => (
   <Menu
