@@ -1,5 +1,6 @@
 {
   "HOME.HELLO": "مرحبا, {role}!",
+  "HOME.CHANGELANGUGE": "تغيير اللغة",
   "TRANSLATOR.SELECT": "اختر اللغة",
   "MENU.NEW": "جديد",
   "MENU.ACTIONS": "اكشنز",

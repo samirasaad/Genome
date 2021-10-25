@@ -12,6 +12,7 @@ import {
 } from "../../../../i18n";
 import { DropdownTopbarItemToggler } from "../../../../_partials/dropdowns";
 import { I18N_CONFIG_KEY } from "../../../../../utilis/constants";
+import { useIntl } from "react-intl";
 
 const languages = [
   {
@@ -27,8 +28,8 @@ const languages = [
 ];
 
 export function LanguageSelectorDropdown() {
+  const intl = useIntl();
   const lang = useLang(); //user machine language
-  const currentLanguage = languages.find((x) => x.lang === lang);
   return (
     <Dropdown drop="down" alignRight>
       <Dropdown.Toggle
@@ -38,7 +39,9 @@ export function LanguageSelectorDropdown() {
         <OverlayTrigger
           placement="bottom"
           overlay={
-            <Tooltip id="language-panel-tooltip">Select Language</Tooltip>
+            <Tooltip id="language-panel-tooltip">
+              {intl.formatMessage({ id: "HOME.CHANGELANGUGE" })}
+            </Tooltip>
           }
         >
           <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
