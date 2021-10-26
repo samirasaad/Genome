@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useIntl } from "react-intl";
 import { styled, alpha } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -9,8 +10,11 @@ import Divider from "@mui/material/Divider";
 // import FileCopyIcon from '@mui/icons-material/FileCopy';
 // import MoreHorizIcon from '@mui/icons-material/MoreHoriz';/
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import "./DropDown.scss";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import "./DropDown.scss";
+import history from "../../../utilis/history";
+import { useDispatch } from "react-redux";
+import { loginReceive } from "../../../store/actions/auth";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -56,6 +60,8 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function CustomizedMenus() {
+  const intl = useIntl();
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -63,6 +69,12 @@ export default function CustomizedMenus() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push("/auth/login");
+    dispatch(loginReceive(localStorage.getItem("token") || null));
   };
 
   return (
@@ -88,8 +100,12 @@ export default function CustomizedMenus() {
           </button>
         </li>
         <li>
-          <button className="dropdown-item" type="button">
-           logout
+          <button
+            className="dropdown-item"
+            type="button"
+            onClick={handleLogout}
+          >
+            {intl.formatMessage({ id: "HEADER.LOGOUT" })}
           </button>
         </li>
       </ul>

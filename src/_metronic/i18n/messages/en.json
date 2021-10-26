@@ -1,5 +1,6 @@
 {
   "HEADER.LANGUAGE": "ع",
+  "HEADER.LOGOUT": "Logout",
   "HOME.HELLO": "Hello, {role}!",
   "HOME.CHANGELANGUGE": "Change language",
   "TRANSLATOR.SELECT": "Select your language",

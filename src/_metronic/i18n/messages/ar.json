@@ -1,5 +1,6 @@
 {
   "HEADER.LANGUAGE": "En",
+  "HEADER.LOGOUT": "تسجيل الخروج",
   "HOME.HELLO": "مرحبا, {role}!",
   "HOME.CHANGELANGUGE": "تغيير اللغة",
   "TRANSLATOR.SELECT": "اختر اللغة",
