@@ -89,7 +89,7 @@ export default function CustomizedMenus() {
         </li>
         <li>
           <button className="dropdown-item" type="button">
-            Something else here
+           logout
           </button>
         </li>
       </ul>

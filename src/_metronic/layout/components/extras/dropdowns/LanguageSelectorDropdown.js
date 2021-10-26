@@ -23,8 +23,8 @@ export function LanguageSelectorDropdown() {
         onClick={() =>
           toggleLanguage(
             JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)) &&
-              JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
-                .selectedLang === "en"
+              JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang ===
+                "en"
               ? "ar"
               : "en"
           )
@@ -39,8 +39,11 @@ export function LanguageSelectorDropdown() {
           }
         >
           <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-            <div>
+            {/* <div>
               {storeLanguage === "en" ? <span>ع</span> : <span>En</span>}
+            </div> */}
+            <div>
+            {intl.formatMessage({ id: "HEADER.LANGUAGE" })}
             </div>
             {/* <img
               className="h-25px w-25px rounded"
@@ -52,7 +55,6 @@ export function LanguageSelectorDropdown() {
       </Dropdown.Toggle>
       <Dropdown.Menu className="p-0 m-0 dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
         {/* <ul className="navi navi-hover py-4"> */}
-
         {/* {languages.map((language) => (
             <li
               key={language.lang}
