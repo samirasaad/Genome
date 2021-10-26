@@ -32,6 +32,18 @@ const allMessages = {
 export function I18nProvider({ children }) {
   const locale = useLang();
   const messages = allMessages[locale];
+  if (!localStorage.getItem("i18nConfig")) {
+    localStorage.setItem("i18nConfig", JSON.stringify({ selectedLang: "en" }));
+  }
+
+  // useEffect(() => {
+  //   var lang = JSON.parse(localStorage.getItem("i18nConfig")).selectedLang;
+  //   let htmlElem = document.querySelector("html");
+  //   let langDirection = lang === "en" ? "ltr" : "rtl";
+  //   htmlElem.setAttribute("lang", lang);
+  //   htmlElem.setAttribute("dir", langDirection);
+  //   htmlElem.style.direction = langDirection;
+  // }, []);
 
   return (
     <IntlProvider locale={locale} messages={messages}>

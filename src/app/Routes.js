@@ -21,13 +21,10 @@ export function Routes() {
   const langgggg = useSelector(({ lang }) => lang);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loginReceive(localStorage.getItem("token") || null));
-    require(langgggg === "ar"
-      ? "./../sass/style.react.rtl.css"
-      : "./../sass/style.react.css");
-    console.log(window.location.pathname.split("/")[2]);
-  }, [dispatch, langgggg]);
+     }, [dispatch]);
 
   return (
     <Switch>

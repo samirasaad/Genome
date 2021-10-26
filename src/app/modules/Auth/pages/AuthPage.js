@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Switch, Redirect } from "react-router-dom";
 import { toAbsoluteUrl } from "../../../../_metronic/_helpers";
 import { ContentRoute } from "../../../../_metronic/layout";
@@ -8,8 +8,20 @@ import Registration from "./Registration";
 import ForgotPassword from "./ForgotPassword";
 import "../../../../_metronic/_assets/sass/pages/login/classic/login-1.scss";
 import "./AuthPage.scss";
-
+// import './../../../../sass/style.react.css'
 export function AuthPage() {
+  useEffect(() => {
+    var lang = JSON.parse(localStorage.getItem("i18nConfig")).selectedLang;
+    let htmlElem = document.querySelector("html");
+    let langDirection = lang === "en" ? "ltr" : "rtl";
+    htmlElem.setAttribute("lang", lang);
+    htmlElem.setAttribute("dir", langDirection);
+    htmlElem.style.direction = langDirection;
+    require(lang === "ar"
+      ? "./../../../../sass/style.react.rtl.css"
+      : "./../../../../sass/style.react.css");
+  }, []);
+
   return (
     <>
       <section className="auth-wrapper primary-gredient d-flex flex-column flex-root">

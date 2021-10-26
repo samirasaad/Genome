@@ -8,6 +8,7 @@ import * as auth from "../_redux/authRedux";
 import { login } from "../_redux/authCrud";
 import { getTokkenRequest, loginRequest } from "../../../../store/actions/auth";
 import store from "../../../../store";
+import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 
 const initialValues = {
   email: "admin@demo.com",
@@ -74,6 +75,7 @@ const Login = (props) => {
         <h3 className="bold-font">
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </h3>
+        <LanguageSelectorDropdown />
       </div>
       <form
         onSubmit={formik.handleSubmit}
