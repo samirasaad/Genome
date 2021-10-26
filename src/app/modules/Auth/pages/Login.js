@@ -9,22 +9,12 @@ import { login } from "../_redux/authCrud";
 import { getTokkenRequest, loginRequest } from "../../../../store/actions/auth";
 import store from "../../../../store";
 
-/*
-  INTL (i18n) docs:
-  https://github.com/formatjs/react-intl/blob/master/docs/Components.md#formattedmessage
-*/
-
-/*
-  Formik+YUP:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-*/
-
 const initialValues = {
   email: "admin@demo.com",
   password: "demo",
 };
 
-function Login(props) {
+const Login = (props) => {
   const { intl } = props;
   const [loading, setLoading] = useState(false);
   const LoginSchema = Yup.object().shape({
@@ -74,20 +64,6 @@ function Login(props) {
       enableLoading();
       setTimeout(() => {
         store.dispatch(loginRequest(values));
-        // login(values.email, values.password)
-        //   .then(({ data: { accessToken } }) => {
-        //     disableLoading();
-        //     props.login(accessToken);
-        //   })
-        //   .catch(() => {
-        //     disableLoading();
-        //     setSubmitting(false);
-        //     setStatus(
-        //       intl.formatMessage({
-        //         id: "AUTH.VALIDATION.INVALID_LOGIN",
-        //       })
-        //     );
-        //   });
       }, 1000);
     },
   });
@@ -95,18 +71,15 @@ function Login(props) {
   return (
     <div className="login-form login-signin" id="kt_login_signin_form">
       <div className="text-center mb-10 mb-lg-20">
-        <h3 className="font-size-h1">
+        <h3 className="bold-font">
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </h3>
-        <p className="text-muted font-weight-bold">
-          Enter your username and password
-        </p>
       </div>
       <form
         onSubmit={formik.handleSubmit}
         className="form fv-plugins-bootstrap fv-plugins-framework"
       >
-        {formik.status ? (
+        {/* {formik.status ? (
           <div className="mb-10 alert alert-custom alert-light-danger alert-dismissible">
             <div className="alert-text font-weight-bold">{formik.status}</div>
           </div>
@@ -117,7 +90,7 @@ function Login(props) {
               <strong>demo</strong> to continue.
             </div>
           </div>
-        )}
+        )} */}
 
         <div className="form-group fv-plugins-icon-container">
           <input
@@ -172,6 +145,6 @@ function Login(props) {
       </form>
     </div>
   );
-}
+};
 
-export default withRouter(Login);
+export default Login;

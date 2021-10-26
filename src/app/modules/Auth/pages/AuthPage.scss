@@ -1,0 +1,16 @@
+.auth-wrapper {
+  .auth-aside {
+    background-image: url("/media/bg/bg-4.jpg");
+    height: 100%;
+    border-radius: 40px;
+    border-end-end-radius: 0;
+    border-start-end-radius: 0;
+  }
+  .auth-content {
+    background-color: #ffffff;
+    border-radius: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+  }
+}

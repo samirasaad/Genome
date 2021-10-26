@@ -26,6 +26,7 @@ export function Routes() {
     require(langgggg === "ar"
       ? "./../sass/style.react.rtl.css"
       : "./../sass/style.react.css");
+    console.log(window.location.pathname.split("/")[2]);
   }, [dispatch, langgggg]);
 
   return (
@@ -33,7 +34,7 @@ export function Routes() {
       {!isAuthorized ? (
         /*Render auth page when user at `/auth` and not authorized.*/
         <Route>
-          <AuthPage />
+          <AuthPage authPageName={window.location.pathname.split("/")[2]} />
         </Route>
       ) : (
         /*Otherwise redirect to root page (`/`)*/

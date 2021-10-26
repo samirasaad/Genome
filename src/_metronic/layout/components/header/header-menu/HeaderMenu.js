@@ -18,7 +18,7 @@ export function HeaderMenu({ layoutProps, role = "موظفة استقبال" }) 
   return (
     <div
       id="kt_header_menu"
-      className={`mt-5 header-menu header-menu-mobile container ${layoutProps.ktMenuClasses}`}
+      className={`mt-5 mx-auto header-menu header-menu-mobile container ${layoutProps.ktMenuClasses}`}
       {...layoutProps.headerMenuAttributes}
     >
       <div className={`menu-nav w-100 ${layoutProps.ulClasses}`}>
