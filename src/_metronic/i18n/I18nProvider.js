@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLang } from "./Metronici18n";
 import { IntlProvider } from "react-intl";
 import "@formatjs/intl-relativetimeformat/polyfill";
@@ -17,6 +17,7 @@ import frMessages from "./messages/fr";
 import jaMessages from "./messages/ja";
 import zhMessages from "./messages/zh";
 import arMessages from "./messages/ar";
+import { useSelector } from "react-redux";
 
 const allMessages = {
   de: deMessages,

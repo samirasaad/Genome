@@ -13,15 +13,20 @@ import BasePage from "./BasePage";
 import { Logout, AuthPage } from "./modules/Auth";
 import ErrorsPage from "./modules/ErrorsExamples/ErrorsPage";
 import { loginReceive } from "../store/actions/auth";
+import store from "../store";
+import { updateDocumentLanguage } from "../utilis/shared";
 
 export function Routes() {
   const isAuthorized = useSelector(({ auth }) => auth.token);
+  const langgggg = useSelector(({ lang }) => lang);
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(loginReceive(localStorage.getItem("token") || null));
-  }, [dispatch]);
+    require(langgggg === "ar"
+      ? "./../sass/style.react.rtl.css"
+      : "./../sass/style.react.css");
+  }, [dispatch, langgggg]);
 
   return (
     <Switch>

@@ -3,14 +3,9 @@ import { useMemo } from "react";
 import { useContext } from "react";
 import { I18N_CONFIG_KEY } from "../../utilis/constants";
 import store from "./../../store";
-// import "./../../sass/style.react.css";
-
-// dynamic import for style sheet rtl/ltr for the first launch
-if (store.getState().lang === "ar") {
-  import("./../../sass/style.react.rtl.css").then((res) => {});
-} else {
-  import("./../../sass/style.react.css").then((res) => {});
-}
+import { setCurrentLang } from "./../../store/actions/Lang";
+import { updateDocumentLanguage } from "./../../utilis/shared";
+// import "./../../sass/style.react.rtl.css";
 
 const initialState = {
   selectedLang: "en",
@@ -28,7 +23,27 @@ function getConfig() {
   return initialState;
 }
 
+updateDocumentLanguage(store.getState().lang);
+
+// if (
+//   JSON.stringify(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang === "ar"
+// ) {
+//   import("./../../sass/style.react.rtl.css").then((res) => {});
+// } else {
+//   import("./../../sass/style.react.css").then((res) => {});
+// }
+
 export function toggleLanguage(lang) {
+  // updateDocumentLanguage(store.getState().lang);
+
+  // dynamic import for style sheet rtl/ltr for the first launch
+  // console.log(store.getState().lang);
+  // if (ap) {
+  //   import("./../../sass/style.react.rtl.css").then((res) => {});
+  // } else {
+  //   import("./../../sass/style.react.css").then((res) => {});
+  // }
+
   localStorage.setItem(I18N_CONFIG_KEY, JSON.stringify({ selectedLang: lang }));
   // updateDocumentLanguage(lang);
   // store.dispatch(setCurrentLang(lang));
