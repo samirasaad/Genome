@@ -1,11 +1,11 @@
 import React, { createContext } from "react";
 import { useMemo } from "react";
 import { useContext } from "react";
-import { setCurrentLang } from "../../store/actions/Lang";
 import { I18N_CONFIG_KEY } from "../../utilis/constants";
 import store from "./../../store";
+// import "./../../sass/style.react.css";
 
-// dynamic import for style sheet rtl/ltr
+// dynamic import for style sheet rtl/ltr for the first launch
 if (store.getState().lang === "ar") {
   import("./../../sass/style.react.rtl.css").then((res) => {});
 } else {
@@ -34,14 +34,6 @@ export function toggleLanguage(lang) {
   // store.dispatch(setCurrentLang(lang));
   window.location.reload();
 }
-
-export const updateDocumentLanguage = (lang) => {
-  let htmlElem = document.querySelector("html");
-  let langDirection = lang === "en" ? "ltr" : "rtl";
-  htmlElem.setAttribute("lang", lang);
-  htmlElem.setAttribute("dir", langDirection);
-  htmlElem.style.direction = langDirection;
-};
 
 const I18nContext = createContext();
 
