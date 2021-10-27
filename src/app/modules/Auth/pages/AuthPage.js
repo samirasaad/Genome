@@ -26,13 +26,9 @@ export function AuthPage() {
     <>
       <section className="auth-wrapper primary-gredient d-flex flex-column flex-root">
         <div className="d-flex h-100 justify-content-center align-items-center">
-          <div
-            className="d-flex h-75 justify-content-center align-items-center auth-content row"
-            id="kt_login"
-          >
-            <div className="col-lg-6 auth-aside login-aside d-flex flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10"></div>
-            <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative p-7 overflow-hidden">
-              <div className="d-flex flex-column-fluid flex-center mt-30 mt-lg-0">
+          <div className="h-75 auth-content row" id="kt_login">
+            <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
+              <div className="h-100 d-flex align-items-center justify-content-center mt-30 mt-lg-0">
                 <Switch>
                   <ContentRoute path="/auth/login" component={Login} />
                   <ContentRoute
@@ -48,6 +44,7 @@ export function AuthPage() {
                 </Switch>
               </div>
             </div>
+            <div className="col-lg-6 auth-aside login-aside d-lg-flex d-none flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10"></div>
           </div>
         </div>
       </section>

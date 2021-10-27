@@ -72,7 +72,7 @@ export default function CustomizedMenus() {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.remove('token');
     history.push("/auth/login");
     dispatch(loginReceive(localStorage.getItem("token") || null));
   };

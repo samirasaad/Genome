@@ -1,10 +1,11 @@
 .auth-wrapper {
   .auth-aside {
-    background-image: url("/media/bg/bg-4.jpg");
+    // background-image: url("/media/bg/bg-4.jpg");
+    background-color: #f5f6fa;
     height: 100%;
     border-radius: 40px;
-    border-end-end-radius: 0;
-    border-start-end-radius: 0;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
   }
   .auth-content {
     background-color: #ffffff;
@@ -12,5 +13,13 @@
     margin-right: auto;
     margin-left: auto;
     width: 80%;
+  }
+  .forgot-password {
+    color: #b5b5b5;
+    font-size: 12px;
+    text-decoration: underline;
+    &:hover {
+      color: #d0d0d0 !important;
+    }
   }
 }

@@ -70,11 +70,9 @@ const Login = (props) => {
   });
 
   return (
-    <div className="login-form login-signin" id="kt_login_signin_form">
-      <div className="text-center mb-10 mb-lg-20">
-        <h3 className="bold-font">
-          <FormattedMessage id="AUTH.LOGIN.TITLE" />
-        </h3>
+    <div className="login-form w-75 login-signin" id="kt_login_signin_form">
+      <div className="text-center mb-10 ">
+        logo
         <LanguageSelectorDropdown />
       </div>
       <form
@@ -93,8 +91,11 @@ const Login = (props) => {
             </div>
           </div>
         )} */}
-
+        <p className="bold-font text-center mb-9">
+          <FormattedMessage id="AUTH.LOGIN.TITLE" />
+        </p>
         <div className="form-group fv-plugins-icon-container">
+          <label className='label-text mb-2'>اسم المستخدم</label>
           <input
             placeholder="Email"
             type="email"
@@ -110,7 +111,7 @@ const Login = (props) => {
             </div>
           ) : null}
         </div>
-        <div className="form-group fv-plugins-icon-container">
+        <div className="form-group fv-plugins-icon-container mb-2">
           <input
             placeholder="Password"
             type="password"
@@ -126,14 +127,15 @@ const Login = (props) => {
             </div>
           ) : null}
         </div>
-        <div className="form-group d-flex flex-wrap justify-content-between align-items-center">
-          <Link
+           <Link
             to="/auth/forgot-password"
-            className="text-dark-50 text-hover-primary my-3 mr-2"
+            className="forgot-password text-hover-primary my-3 mr-2"
             id="kt_login_forgot"
           >
             <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
           </Link>
+        <div className="form-group d-flex flex-wrap justify-content-between align-items-center">
+         
           <button
             id="kt_login_signin_submit"
             type="submit"
