@@ -28,7 +28,7 @@ export function AuthPage() {
         <div className="d-flex h-100 justify-content-center align-items-center">
           <div className="h-75 auth-content row" id="kt_login">
             <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
-              <div className="h-100 d-flex align-items-center justify-content-center mt-30 mt-lg-0">
+              <div className="h-100 d-flex align-items-center justify-content-center">
                 <Switch>
                   <ContentRoute path="/auth/login" component={Login} />
                   <ContentRoute

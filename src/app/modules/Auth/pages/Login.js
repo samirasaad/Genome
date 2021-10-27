@@ -9,6 +9,8 @@ import { login } from "../_redux/authCrud";
 import { getTokkenRequest, loginRequest } from "../../../../store/actions/auth";
 import store from "../../../../store";
 import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
+import Btn from "../../../components/shared/Btn/Btn";
+import Spinner from "./../../../components/shared/Spinner/Spinner";
 
 const initialValues = {
   email: "admin@demo.com",
@@ -95,7 +97,7 @@ const Login = (props) => {
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </p>
         <div className="form-group fv-plugins-icon-container">
-          <label className='label-text mb-2'>اسم المستخدم</label>
+          <label className="label-text mb-2">اسم المستخدم</label>
           <input
             placeholder="Email"
             type="email"
@@ -127,25 +129,29 @@ const Login = (props) => {
             </div>
           ) : null}
         </div>
-           <Link
-            to="/auth/forgot-password"
-            className="forgot-password text-hover-primary my-3 mr-2"
-            id="kt_login_forgot"
-          >
-            <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
-          </Link>
-        <div className="form-group d-flex flex-wrap justify-content-between align-items-center">
-         
-          <button
-            id="kt_login_signin_submit"
-            type="submit"
-            disabled={formik.isSubmitting}
-            className={`btn btn-primary font-weight-bold px-9 py-4 my-3`}
-          >
-            <span>Sign In</span>
-            {loading && <span className="ml-3 spinner spinner-white"></span>}
-          </button>
-        </div>
+        <Link
+          to="/auth/forgot-password"
+          className="forgot-password text-hover-primary my-3 mr-2"
+          id="kt_login_forgot"
+        >
+          <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
+        </Link>
+        {/* <div className="form-group d-flex flex-wrap justify-content-between align-items-center"> */}
+        <Btn
+          disabled={loading}
+          content={
+            <>
+              {loading ? (
+                <Spinner className="ml-3 spinner-white" />
+              ) : (
+                <FormattedMessage id="AUTH.LOGIN.BUTTON" />
+              )}
+            </>
+          }
+          type="text"
+          className={`primary-button w-100 py-3 mt-9`}
+        />
+        {/* </div> */}
       </form>
     </div>
   );

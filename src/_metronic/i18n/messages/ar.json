@@ -21,7 +21,7 @@
   "AUTH.GENERAL.LEGAL": "Legal",
   "AUTH.GENERAL.CONTACT": "Contact",
   "AUTH.LOGIN.TITLE": "تسجيـل الدخـول",
-  "AUTH.LOGIN.BUTTON": "Sign In",
+  "AUTH.LOGIN.BUTTON": "تسجيل الدخول",
   "AUTH.FORGOT.TITLE": "Forgotten Password?",
   "AUTH.FORGOT.DESC": "Enter your email to reset your password",
   "AUTH.FORGOT.SUCCESS": "Your account has been successfully reset.",
