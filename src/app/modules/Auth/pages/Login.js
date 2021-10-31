@@ -11,6 +11,7 @@ import store from "../../../../store";
 import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
+import InputField from "../../../components/shared/InputField/InputField";
 
 const initialValues = {
   email: "admin@demo.com",
@@ -96,7 +97,7 @@ const Login = (props) => {
         <p className="bold-font text-center mb-9">
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </p>
-        <div className="form-group fv-plugins-icon-container">
+        {/* <div className="form-group fv-plugins-icon-container">
           <label className="label-text mb-2">اسم المستخدم</label>
           <input
             placeholder="Email"
@@ -112,8 +113,21 @@ const Login = (props) => {
               <div className="fv-help-block">{formik.errors.email}</div>
             </div>
           ) : null}
-        </div>
-        <div className="form-group fv-plugins-icon-container mb-2">
+        </div> */}
+        <InputField
+          input={{
+            inputClasses: "form-control form-control-solid h-auto py-5 px-6",
+            placeholder: "من فضلك اكتب اسم المستخدم",
+            name: "email",
+            id: "email",
+            type: "email",
+          }}
+          label={{
+            labelText: "اسم المستخدم",
+            labelClasses: "mb-2",
+          }}
+        />
+        {/* <div className="form-group fv-plugins-icon-container mb-2">
           <input
             placeholder="Password"
             type="password"
@@ -128,7 +142,7 @@ const Login = (props) => {
               <div className="fv-help-block">{formik.errors.password}</div>
             </div>
           ) : null}
-        </div>
+        </div> */}
         <Link
           to="/auth/forgot-password"
           className="forgot-password text-hover-primary my-3 mr-2"
@@ -149,7 +163,7 @@ const Login = (props) => {
             </>
           }
           type="text"
-          className={`primary-button w-100 py-3 mt-9`}
+          className={`primary-button w-100 py-4 mt-9`}
         />
         {/* </div> */}
       </form>
