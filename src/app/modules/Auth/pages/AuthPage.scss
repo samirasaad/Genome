@@ -1,6 +1,8 @@
 .auth-wrapper {
   .auth-aside {
-    // background-image: url("/media/bg/bg-4.jpg");
+    background-image: url("./../../../../_metronic/_assets/Images/authImg.png");
+    background-size: 75%;
+    background-position: center;
     background-color: #f5f6fa;
     height: 100%;
     border-radius: 40px;
@@ -13,6 +15,7 @@
     margin-right: auto;
     margin-left: auto;
     width: 80%;
+    height: 82%;
   }
   .forgot-password {
     color: #b5b5b5;

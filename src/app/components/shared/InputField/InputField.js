@@ -1,17 +1,27 @@
 import React from "react";
+import { injectIntl, intlShape } from "react-intl";
 
 const InputField = ({
+  intl,
   type,
+  parentClasses,
   label: { labelText, labelClasses },
-  input: { inputClasses, placeholder, name, id, type },
+  input: { inputClasses, placeholderId, name, id, isRequired },
 }) => {
+  console.log(placeholderId);
+  const placeholderrrr = placeholderId
+    ? intl.formatMessage({ id: placeholderId })
+    : "";
   return (
-    <div className="form-group fv-plugins-icon-container">
-      <label className={`label-text ${labelClasses}`}>{labelText}</label>
+    <div className={` ${parentClasses} form-group fv-plugins-icon-container`}>
+      <label className={`label-text ${labelClasses}`}>
+        {labelText}
+        {isRequired && <span className="text-danger">*</span>}
+      </label>
       <input
-        placeholder={placeholder}
+        placeholder={placeholderrrr || ""}
         type={type}
-        className={className}
+        className={inputClasses}
         name={name}
         //   {...formik.getFieldProps("email")}
       />
@@ -24,4 +34,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default injectIntl(InputField);

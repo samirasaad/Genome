@@ -12,6 +12,7 @@ import { LanguageSelectorDropdown } from "../../../../_metronic/layout/component
 import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
+import { darkLogo } from "./../../../../utilis/images";
 
 const initialValues = {
   email: "admin@demo.com",
@@ -75,7 +76,7 @@ const Login = (props) => {
   return (
     <div className="login-form w-75 login-signin" id="kt_login_signin_form">
       <div className="text-center mb-10 ">
-        logo
+        <img src={darkLogo} alt="logo" />
         <LanguageSelectorDropdown />
       </div>
       <form
@@ -116,14 +117,30 @@ const Login = (props) => {
         </div> */}
         <InputField
           input={{
-            inputClasses: "form-control form-control-solid h-auto py-5 px-6",
-            placeholder: "من فضلك اكتب اسم المستخدم",
+            isRequired: true,
+            inputClasses: "form-control form-control-solid h-auto py-3 px-5",
+            placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
             name: "email",
             id: "email",
             type: "email",
           }}
           label={{
-            labelText: "اسم المستخدم",
+            labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
+            labelClasses: "mb-2",
+          }}
+        />
+
+        <InputField
+          parentClasses="mb-0"
+          input={{
+            isRequired: true,
+            inputClasses: "form-control form-control-solid h-auto py-3 px-5",
+            name: "password",
+            id: "password",
+            type: "password",
+          }}
+          label={{
+            labelText: <FormattedMessage id="AUTH.LOGIN.PASSWORD" />,
             labelClasses: "mb-2",
           }}
         />
