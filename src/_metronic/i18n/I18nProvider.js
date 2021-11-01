@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLang } from "./Metronici18n";
 import { IntlProvider } from "react-intl";
 import "@formatjs/intl-relativetimeformat/polyfill";
@@ -17,7 +17,6 @@ import frMessages from "./messages/fr";
 import jaMessages from "./messages/ja";
 import zhMessages from "./messages/zh";
 import arMessages from "./messages/ar";
-import { useSelector } from "react-redux";
 
 const allMessages = {
   de: deMessages,
@@ -35,15 +34,6 @@ export function I18nProvider({ children }) {
   if (!localStorage.getItem("i18nConfig")) {
     localStorage.setItem("i18nConfig", JSON.stringify({ selectedLang: "en" }));
   }
-
-  // useEffect(() => {
-  //   var lang = JSON.parse(localStorage.getItem("i18nConfig")).selectedLang;
-  //   let htmlElem = document.querySelector("html");
-  //   let langDirection = lang === "en" ? "ltr" : "rtl";
-  //   htmlElem.setAttribute("lang", lang);
-  //   htmlElem.setAttribute("dir", langDirection);
-  //   htmlElem.style.direction = langDirection;
-  // }, []);
 
   return (
     <IntlProvider locale={locale} messages={messages}>

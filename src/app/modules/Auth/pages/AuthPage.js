@@ -8,7 +8,8 @@ import Registration from "./Registration";
 import ForgotPassword from "./ForgotPassword";
 import "../../../../_metronic/_assets/sass/pages/login/classic/login-1.scss";
 import "./AuthPage.scss";
-// import './../../../../sass/style.react.css'
+// import test from '../../../../_metronic/_assets/sass/layout/_rtl.scss'
+
 export function AuthPage() {
   useEffect(() => {
     var lang = JSON.parse(localStorage.getItem("i18nConfig")).selectedLang;
@@ -19,6 +20,10 @@ export function AuthPage() {
     htmlElem.style.direction = langDirection;
     require(lang === "ar"
       ? "./../../../../sass/style.react.rtl.css"
+      : "./../../../../sass/style.react.css");
+
+    require(lang === "ar"
+      ? "../../../../_metronic/_assets/sass/layout/_rtl.scss"
       : "./../../../../sass/style.react.css");
   }, []);
 
