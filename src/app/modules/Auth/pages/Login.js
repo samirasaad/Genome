@@ -13,11 +13,14 @@ import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
 import { darkLogo } from "./../../../../utilis/images";
-import { EMPLOYEE_ID_PATTERN, PASSWORD_PATTERN } from "../../../../utilis/constants";
+import {
+  EMPLOYEE_ID_PATTERN,
+  PASSWORD_PATTERN,
+} from "../../../../utilis/constants";
 
 const initialValues = {
-  userName: '',
-  password: ''
+  userName: "",
+  password: "",
 };
 
 const Login = (props) => {
@@ -32,11 +35,11 @@ const Login = (props) => {
       .max(50, "max 50 char")
       .required(<FormattedMessage id="AUTH.VALIDATION.REQUIRED_FIELD" />),
     password: Yup.string()
+      .min(8, "Minimum 8 char")
       .matches(
         PASSWORD_PATTERN,
         "should contain numbers, letters and special chars "
       )
-      .min(8, "Minimum 8 char")
       .required(<FormattedMessage id="AUTH.VALIDATION.REQUIRED_FIELD" />),
   });
 
@@ -133,7 +136,7 @@ const Login = (props) => {
           content={
             <>
               {loading ? (
-                <Spinner className="ml-3 spinner-white" />
+                <Spinner className="spinner-white" />
               ) : (
                 <FormattedMessage id="AUTH.LOGIN.BUTTON" />
               )}
@@ -142,7 +145,6 @@ const Login = (props) => {
           type="text"
           className={`primary-button w-100 py-4 mt-9`}
         />
-        {/* </div> */}
       </form>
     </div>
   );

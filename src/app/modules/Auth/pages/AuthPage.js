@@ -21,7 +21,6 @@ export function AuthPage() {
     require(lang === "ar"
       ? "./../../../../sass/style.react.rtl.css"
       : "./../../../../sass/style.react.css");
-
     require(lang === "ar"
       ? "../../../../_metronic/_assets/sass/layout/_rtl.scss"
       : "./../../../../sass/style.react.css");
