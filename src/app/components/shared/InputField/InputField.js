@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { injectIntl } from "react-intl";
 import "./InputField.scss";
@@ -7,19 +7,15 @@ const InputField = ({
   intl,
   eyeId,
   parentClasses,
+  error,
   label: { labelText, labelClasses },
   input: { type, inputClasses, placeholderId, name, id, isRequired },
+  ...resetProps
 }) => {
   const [isPreview, setIsPreview] = useState(false);
   const placeholderrrr = placeholderId
     ? intl.formatMessage({ id: placeholderId })
     : "";
-
-  // useEffect(()=>{
-  //   let inputElem = document.querySelector(`#${inputId}`);
-  //   console.log(inputElem)
-  //   inputElem.setAttribute('type','text')
-  // },[])
 
   const previewPassword = (e, inputId) => {
     setIsPreview(!isPreview);
@@ -43,8 +39,15 @@ const InputField = ({
         type={type}
         className={`${inputClasses}`}
         name={name}
-        //   {...formik.getFieldProps("email")}
+        {...resetProps}
       />
+
+      {error ? (
+        <div className="fv-plugins-message-container">
+          <div className="fv-help-block">{error}</div>
+        </div>
+      ) : null}
+
       {type === "password" &&
         (isPreview ? (
           <i
@@ -59,11 +62,6 @@ const InputField = ({
             onClick={(e) => previewPassword(e, id)}
           ></i>
         ))}
-      {/* {formik.touched[name] && formik.errors.email ? (
-        <div className="fv-plugins-message-container">
-          <div className="fv-help-block">{formik.errors.email}</div>
-        </div>
-      ) : null} */}
     </div>
   );
 };

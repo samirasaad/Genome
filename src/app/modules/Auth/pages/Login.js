@@ -13,33 +13,31 @@ import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
 import { darkLogo } from "./../../../../utilis/images";
+import { EMPLOYEE_ID_PATTERN, PASSWORD_PATTERN } from "../../../../utilis/constants";
 
 const initialValues = {
-  email: "admin@demo.com",
-  password: "demo",
+  userName: '',
+  password: ''
 };
 
 const Login = (props) => {
-  const { intl } = props;
   const [loading, setLoading] = useState(false);
+
   const LoginSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Wrong email format")
-      .min(3, "Minimum 3 symbols")
-      .max(50, "Maximum 50 symbols"),
-    // .required(
-    //   intl.formatMessage({
-    //     id: "AUTH.VALIDATION.REQUIRED_FIELD",
-    //   })
-    // ),,
+    userName: Yup.string()
+      .matches(
+        EMPLOYEE_ID_PATTERN,
+        "should contains english letters and numbers only"
+      )
+      .max(50, "max 50 char")
+      .required(<FormattedMessage id="AUTH.VALIDATION.REQUIRED_FIELD" />),
     password: Yup.string()
-      .min(3, "Minimum 3 symbols")
-      .max(50, "Maximum 50 symbols"),
-    // .required(
-    //   intl.formatMessage({
-    //     id: "AUTH.VALIDATION.REQUIRED_FIELD",
-    //   })
-    // ),
+      .matches(
+        PASSWORD_PATTERN,
+        "should contain numbers, letters and special chars "
+      )
+      .min(8, "Minimum 8 char")
+      .required(<FormattedMessage id="AUTH.VALIDATION.REQUIRED_FIELD" />),
   });
 
   const enableLoading = () => {
@@ -79,59 +77,35 @@ const Login = (props) => {
         <img src={darkLogo} alt="logo" />
         <LanguageSelectorDropdown />
       </div>
+      {console.log(formik)}
       <form
         onSubmit={formik.handleSubmit}
         className="form fv-plugins-bootstrap fv-plugins-framework"
       >
-        {/* {formik.status ? (
-          <div className="mb-10 alert alert-custom alert-light-danger alert-dismissible">
-            <div className="alert-text font-weight-bold">{formik.status}</div>
-          </div>
-        ) : (
-          <div className="mb-10 alert alert-custom alert-light-info alert-dismissible">
-            <div className="alert-text ">
-              Use account <strong>admin@demo.com</strong> and password{" "}
-              <strong>demo</strong> to continue.
-            </div>
-          </div>
-        )} */}
         <p className="bold-font text-center mb-9">
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </p>
-        {/* <div className="form-group fv-plugins-icon-container">
-          <label className="label-text mb-2">اسم المستخدم</label>
-          <input
-            placeholder="Email"
-            type="email"
-            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-              "email"
-            )}`}
-            name="email"
-            {...formik.getFieldProps("email")}
-          />
-          {formik.touched.email && formik.errors.email ? (
-            <div className="fv-plugins-message-container">
-              <div className="fv-help-block">{formik.errors.email}</div>
-            </div>
-          ) : null}
-        </div> */}
+        {console.log(formik.touched.userName)}
         <InputField
+          error={formik.touched.userName && formik.errors.userName}
           input={{
             isRequired: true,
             inputClasses: "form-control form-control-solid h-auto py-3 px-5",
             placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
-            name: "email",
-            id: "email",
-            type: "email",
+            name: "userName",
+            id: "userName",
+            type: "userName",
           }}
           label={{
             labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
             labelClasses: "mb-2",
           }}
+          {...formik.getFieldProps("userName")}
         />
 
         <InputField
-          parentClasses="mb-4"
+          error={formik.touched.password && formik.errors.password}
+          parentClasses="mb-2"
           eyeId="login-password-eye"
           input={{
             isRequired: true,
@@ -144,23 +118,9 @@ const Login = (props) => {
             labelText: <FormattedMessage id="AUTH.LOGIN.PASSWORD" />,
             labelClasses: "mb-2",
           }}
+          {...formik.getFieldProps("password")}
         />
-        {/* <div className="form-group fv-plugins-icon-container mb-2">
-          <input
-            placeholder="Password"
-            type="password"
-            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-              "password"
-            )}`}
-            name="password"
-            {...formik.getFieldProps("password")}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="fv-plugins-message-container">
-              <div className="fv-help-block">{formik.errors.password}</div>
-            </div>
-          ) : null}
-        </div> */}
+
         <Link
           to="/auth/forgot-password"
           className="forgot-password text-hover-primary my-3 mr-2"
@@ -168,7 +128,6 @@ const Login = (props) => {
         >
           <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
         </Link>
-        {/* <div className="form-group d-flex flex-wrap justify-content-between align-items-center"> */}
         <Btn
           disabled={loading}
           content={
