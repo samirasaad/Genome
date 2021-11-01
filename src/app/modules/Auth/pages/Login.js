@@ -132,6 +132,7 @@ const Login = (props) => {
 
         <InputField
           parentClasses="mb-0"
+          eyeId="login-password-eye"
           input={{
             isRequired: true,
             inputClasses: "form-control form-control-solid h-auto py-3 px-5",

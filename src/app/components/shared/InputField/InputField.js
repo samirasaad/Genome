@@ -1,30 +1,64 @@
-import React from "react";
-import { injectIntl, intlShape } from "react-intl";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { injectIntl } from "react-intl";
+import "./InputField.scss";
 
 const InputField = ({
   intl,
-  type,
+  eyeId,
   parentClasses,
   label: { labelText, labelClasses },
-  input: { inputClasses, placeholderId, name, id, isRequired },
+  input: { type, inputClasses, placeholderId, name, id, isRequired },
 }) => {
-  console.log(placeholderId);
+  const [isPreview, setIsPreview] = useState(false);
   const placeholderrrr = placeholderId
     ? intl.formatMessage({ id: placeholderId })
     : "";
+
+  // useEffect(()=>{
+  //   let inputElem = document.querySelector(`#${inputId}`);
+  //   console.log(inputElem)
+  //   inputElem.setAttribute('type','text')
+  // },[])
+
+  const previewPassword = (e, inputId) => {
+    setIsPreview(!isPreview);
+    let inputElem = document.querySelector(`#${inputId}`);
+    isPreview
+      ? inputElem.setAttribute("type", "password")
+      : inputElem.setAttribute("type", "text");
+  };
+
   return (
-    <div className={` ${parentClasses} form-group fv-plugins-icon-container`}>
+    <div
+      className={`position-relative ${parentClasses} form-group fv-plugins-icon-container`}
+    >
       <label className={`label-text ${labelClasses}`}>
         {labelText}
         {isRequired && <span className="text-danger">*</span>}
       </label>
       <input
+        id={id}
         placeholder={placeholderrrr || ""}
         type={type}
-        className={inputClasses}
+        className={`${inputClasses}`}
         name={name}
         //   {...formik.getFieldProps("email")}
       />
+      {type === "password" &&
+        (isPreview ? (
+          <i
+            className="far fa-eye password-eye position-absolute cursor-pointer"
+            id={eyeId}
+            onClick={(e) => previewPassword(e, id)}
+          ></i>
+        ) : (
+          <i
+            className="far fa-eye-slash password-eye position-absolute cursor-pointer"
+            id={eyeId}
+            onClick={(e) => previewPassword(e, id)}
+          ></i>
+        ))}
       {/* {formik.touched[name] && formik.errors.email ? (
         <div className="fv-plugins-message-container">
           <div className="fv-help-block">{formik.errors.email}</div>

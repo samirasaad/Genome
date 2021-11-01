@@ -33,7 +33,7 @@ export function LanguageSelectorDropdown() {
         <OverlayTrigger
           placement="bottom"
           overlay={
-            <Tooltip id="language-panel-tooltip">
+            <Tooltip id="language-panel-tooltip" className='tooltip-text'>
               {intl.formatMessage({ id: "HOME.CHANGELANGUGE" })}
             </Tooltip>
           }
