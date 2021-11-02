@@ -14,6 +14,7 @@
   "AUTH.GENERAL.OR": "Or",
   "AUTH.GENERAL.SUBMIT_BUTTON": "Submit",
   "AUTH.GENERAL.SUBMIT_SEND": "Send",
+  "AUTH.GENERAL.SUBMIT_RESEND": "Resend ?",
   "AUTH.GENERAL.NO_ACCOUNT": "Don't have an account?",
   "AUTH.GENERAL.SIGNUP_BUTTON": "Sign Up",
   "AUTH.GENERAL.FORGOT_BUTTON": "Forgot Password?!",

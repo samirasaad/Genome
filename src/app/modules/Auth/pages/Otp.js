@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
+import moment from "moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
@@ -14,6 +15,7 @@ import { darkLogo, mobileLock } from "./../../../../utilis/images";
 
 const Otp = (props) => {
   const [loading, setLoading] = useState(false);
+  let [seconds, setSeconds] = useState(0);
   const initialValues = {
     otpCode: "",
   };
@@ -22,6 +24,18 @@ const Otp = (props) => {
       .required()
       .min(4),
   });
+  const end_date = localStorage.getItem("end_date") || 1635874200;
+
+  setInterval(() => {
+    if (end_date) {
+      let now = moment();
+      let dueDate = moment(end_date * 1000);
+      // console.log("diff", dueDate.diff(now, "seconds"));
+      setSeconds(
+        dueDate.diff(now, "seconds") < 0 ? 0 : dueDate.diff(now, "seconds")
+      );
+    }
+  }, 1000);
 
   const enableLoading = () => {
     setLoading(true);
@@ -77,7 +91,18 @@ const Otp = (props) => {
             <FormattedMessage id="AUTH.OTP.HINT" />
           </p>
           {/* timer */}
-          <CountdownTimer end_date="1635860280" />
+          <div className="count-down-timer d-flex justify-content-center align-items-baseline mb-0">
+            <CountdownTimer seconds={seconds} />
+            <p
+              className={`small ${
+                seconds === 0
+                  ? "text-info cursor-pointer"
+                  : "text-muted  no-pointer-events"
+              }`}
+            >
+              <FormattedMessage id="AUTH.GENERAL.SUBMIT_RESEND" />
+            </p>
+          </div>
           <InputField
             parentClasses="mb-5"
             input={{
