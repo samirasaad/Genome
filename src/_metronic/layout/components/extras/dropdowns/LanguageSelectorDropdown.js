@@ -30,28 +30,17 @@ export function LanguageSelectorDropdown() {
           )
         }
       >
-        <OverlayTrigger
-          placement="bottom"
-          overlay={
-            <Tooltip id="language-panel-tooltip" className='tooltip-text'>
-              {intl.formatMessage({ id: "HOME.CHANGELANGUGE" })}
-            </Tooltip>
-          }
-        >
-          <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-            {/* <div>
+        <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+          {/* <div>
               {storeLanguage === "en" ? <span>ع</span> : <span>En</span>}
             </div> */}
-            <div>
-            {intl.formatMessage({ id: "HEADER.LANGUAGE" })}
-            </div>
-            {/* <img
+          <div>{intl.formatMessage({ id: "HEADER.LANGUAGE" })}</div>
+          {/* <img
               className="h-25px w-25px rounded"
               src={currentLanguage.flag}
               alt={currentLanguage.name}
             /> */}
-          </div>
-        </OverlayTrigger>
+        </div>
       </Dropdown.Toggle>
       <Dropdown.Menu className="p-0 m-0 dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
         {/* <ul className="navi navi-hover py-4"> */}

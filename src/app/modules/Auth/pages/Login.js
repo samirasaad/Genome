@@ -77,78 +77,79 @@ const Login = (props) => {
   });
 
   return (
-    <div className="login-form w-75 login-signin" id="kt_login_signin_form">
-      <div className="text-center mb-10 ">
-        <img src={darkLogo} alt="logo" className="logo" />
-        <LanguageSelectorDropdown />
-      </div>
-      <form
-        onSubmit={formik.handleSubmit}
-        className="form fv-plugins-bootstrap fv-plugins-framework"
-      >
-        <p className="bold-font text-center mb-9">
-          <FormattedMessage id="AUTH.LOGIN.TITLE" />
-        </p>
-        {console.log(formik)}
-        <InputField
-          // error={formik.errors.userName}
-          // error={formik.touched.userName && formik.errors.userName}
-          input={{
-            isRequired: true,
-            inputClasses: "form-control form-control-solid h-auto py-3 px-5",
-            placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
-            name: "userName",
-            id: "userName",
-            type: "userName",
-          }}
-          label={{
-            labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
-            labelClasses: "mb-2",
-          }}
-          {...formik.getFieldProps("userName")}
-        />
-
-        <InputField
-          // error={formik.errors.password}
-          // error={formik.touched.password && formik.errors.password}
-          parentClasses="mb-2"
-          eyeId="login-password-eye"
-          input={{
-            isRequired: true,
-            inputClasses: "form-control form-control-solid h-auto py-3 px-5",
-            name: "password",
-            id: "password",
-            type: "password",
-          }}
-          label={{
-            labelText: <FormattedMessage id="AUTH.LOGIN.PASSWORD" />,
-            labelClasses: "mb-2",
-          }}
-          {...formik.getFieldProps("password")}
-        />
-
-        <Link
-          to="/auth/forgot-password"
-          className="forgot-password text-hover-primary my-3 mr-2"
-          id="kt_login_forgot"
+    <div className="h-100 d-flex align-items-center justify-content-center">
+      <div className="login-form w-75 login-signin" id="kt_login_signin_form">
+        <div className="text-center mb-10 ">
+          <img src={darkLogo} alt="logo" className="logo" />
+          <LanguageSelectorDropdown />
+        </div>
+        <form
+          onSubmit={formik.handleSubmit}
+          className="form fv-plugins-bootstrap fv-plugins-framework"
         >
-          <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
-        </Link>
-        <Btn
-          disabled={loading}
-          content={
-            <>
-              {loading ? (
-                <Spinner className="spinner-white" />
-              ) : (
-                <FormattedMessage id="AUTH.LOGIN.BUTTON" />
-              )}
-            </>
-          }
-          type="text"
-          className={`primary-button w-100 py-3 mt-9 ${loading && "py-7"}`}
-        />
-      </form>
+          <p className="bold-font text-center mb-9">
+            <FormattedMessage id="AUTH.LOGIN.TITLE" />
+          </p>
+          <InputField
+            // error={formik.errors.userName}
+            // error={formik.touched.userName && formik.errors.userName}
+            input={{
+              isRequired: true,
+              inputClasses: "form-control form-control-solid h-auto py-3 px-5",
+              placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
+              name: "userName",
+              id: "userName",
+              type: "userName",
+            }}
+            label={{
+              labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
+              labelClasses: "mb-2",
+            }}
+            {...formik.getFieldProps("userName")}
+          />
+
+          <InputField
+            // error={formik.errors.password}
+            // error={formik.touched.password && formik.errors.password}
+            parentClasses="mb-2"
+            eyeId="login-password-eye"
+            input={{
+              isRequired: true,
+              inputClasses: "form-control form-control-solid h-auto py-3 px-5",
+              name: "password",
+              id: "password",
+              type: "password",
+            }}
+            label={{
+              labelText: <FormattedMessage id="AUTH.LOGIN.PASSWORD" />,
+              labelClasses: "mb-2",
+            }}
+            {...formik.getFieldProps("password")}
+          />
+
+          <Link
+            to="/auth/forgot-password"
+            className="forgot-password text-hover-primary my-3 mr-2"
+            id="kt_login_forgot"
+          >
+            <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
+          </Link>
+          <Btn
+            disabled={loading}
+            content={
+              <>
+                {loading ? (
+                  <Spinner className="spinner-white" />
+                ) : (
+                  <FormattedMessage id="AUTH.LOGIN.BUTTON" />
+                )}
+              </>
+            }
+            type="text"
+            className={`primary-button w-100 py-3 mt-9 ${loading && "py-7"}`}
+          />
+        </form>
+      </div>
     </div>
   );
 };

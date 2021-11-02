@@ -8,6 +8,7 @@ import Registration from "./Registration";
 import ForgotPassword from "./ForgotPassword";
 import "../../../../_metronic/_assets/sass/pages/login/classic/login-1.scss";
 import "./AuthPage.scss";
+import Otp from "./Otp";
 // import test from '../../../../_metronic/_assets/sass/layout/_rtl.scss'
 
 export function AuthPage() {
@@ -32,9 +33,9 @@ export function AuthPage() {
         <div className="d-flex h-100 justify-content-center align-items-center">
           <div className=" auth-content row" id="kt_login">
             <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
-              <div className="h-100 d-flex align-items-center justify-content-center">
                 <Switch>
                   <ContentRoute path="/auth/login" component={Login} />
+                  <ContentRoute path="/auth/otp" component={Otp} />
                   <ContentRoute
                     path="/auth/registration"
                     component={Registration}
@@ -46,7 +47,6 @@ export function AuthPage() {
                   <Redirect from="/auth" exact={true} to="/auth/login" />
                   <Redirect to="/auth/login" />
                 </Switch>
-              </div>
             </div>
             <div className="col-lg-6 auth-aside login-aside d-lg-flex d-none flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10"></div>
           </div>
