@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { injectIntl } from "react-intl";
+import ErrMsg from "../ErrMsg/ErrMsg";
 import "./InputField.scss";
 
 const InputField = ({
@@ -42,11 +43,7 @@ const InputField = ({
         {...resetProps}
       />
 
-      {error ? (
-        <div className="fv-plugins-message-container">
-          <div className="fv-help-block">{error}</div>
-        </div>
-      ) : null}
+      {error && <ErrMsg content={error} />}
 
       {type === "password" &&
         (isPreview ? (

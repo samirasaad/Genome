@@ -66,6 +66,8 @@ const Login = (props) => {
   const formik = useFormik({
     initialValues,
     validationSchema: LoginSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
       setTimeout(() => {
@@ -88,9 +90,10 @@ const Login = (props) => {
         <p className="bold-font text-center mb-9">
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </p>
-        {console.log(formik.touched.userName)}
+        {console.log(formik)}
         <InputField
-          error={formik.touched.userName && formik.errors.userName}
+          error={formik.errors.userName}
+          // error={formik.touched.userName && formik.errors.userName}
           input={{
             isRequired: true,
             inputClasses: "form-control form-control-solid h-auto py-3 px-5",
@@ -107,7 +110,8 @@ const Login = (props) => {
         />
 
         <InputField
-          error={formik.touched.password && formik.errors.password}
+          error={formik.errors.password}
+          // error={formik.touched.password && formik.errors.password}
           parentClasses="mb-2"
           eyeId="login-password-eye"
           input={{
@@ -143,7 +147,7 @@ const Login = (props) => {
             </>
           }
           type="text"
-          className={`primary-button w-100 py-4 mt-9`}
+          className={`primary-button w-100 py-4 mt-9 ${loading && "py-7"}`}
         />
       </form>
     </div>
