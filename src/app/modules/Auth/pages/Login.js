@@ -79,7 +79,7 @@ const Login = (props) => {
   return (
     <div className="login-form w-75 login-signin" id="kt_login_signin_form">
       <div className="text-center mb-10 ">
-        <img src={darkLogo} alt="logo" />
+        <img src={darkLogo} alt="logo" className="logo" />
         <LanguageSelectorDropdown />
       </div>
       <form
@@ -146,7 +146,7 @@ const Login = (props) => {
             </>
           }
           type="text"
-          className={`primary-button w-100 py-4 mt-9 ${loading && "py-7"}`}
+          className={`primary-button w-100 py-3 mt-9 ${loading && "py-7"}`}
         />
       </form>
     </div>
