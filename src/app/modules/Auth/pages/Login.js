@@ -28,19 +28,19 @@ const Login = (props) => {
 
   const LoginSchema = Yup.object().shape({
     userName: Yup.string()
-      .matches(
-        EMPLOYEE_ID_PATTERN,
-        "should contains english letters and numbers only"
-      )
-      .max(50, "max 50 char")
-      .required(<FormattedMessage id="AUTH.VALIDATION.REQUIRED_FIELD" />),
+      // .matches(
+      //   EMPLOYEE_ID_PATTERN,
+      //   "should contains english letters and numbers only"
+      // )
+      // .max(50, "max 50 char")
+      .required(),
     password: Yup.string()
-      .min(8, "Minimum 8 char")
-      .matches(
-        PASSWORD_PATTERN,
-        "should contain numbers, letters and special chars "
-      )
-      .required(<FormattedMessage id="AUTH.VALIDATION.REQUIRED_FIELD" />),
+      // .min(8, "Minimum 8 char")
+      // .matches(
+      //   PASSWORD_PATTERN,
+      //   "should contain numbers, letters and special chars "
+      // )
+      .required(),
   });
 
   const enableLoading = () => {
@@ -82,7 +82,6 @@ const Login = (props) => {
         <img src={darkLogo} alt="logo" />
         <LanguageSelectorDropdown />
       </div>
-      {console.log(formik)}
       <form
         onSubmit={formik.handleSubmit}
         className="form fv-plugins-bootstrap fv-plugins-framework"
@@ -92,7 +91,7 @@ const Login = (props) => {
         </p>
         {console.log(formik)}
         <InputField
-          error={formik.errors.userName}
+          // error={formik.errors.userName}
           // error={formik.touched.userName && formik.errors.userName}
           input={{
             isRequired: true,
@@ -110,7 +109,7 @@ const Login = (props) => {
         />
 
         <InputField
-          error={formik.errors.password}
+          // error={formik.errors.password}
           // error={formik.touched.password && formik.errors.password}
           parentClasses="mb-2"
           eyeId="login-password-eye"
