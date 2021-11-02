@@ -12,19 +12,15 @@ import { Layout } from "../_metronic/layout";
 import BasePage from "./BasePage";
 import { Logout, AuthPage } from "./modules/Auth";
 import ErrorsPage from "./modules/ErrorsExamples/ErrorsPage";
-import { loginReceive } from "../store/actions/auth";
-import store from "../store";
-import { updateDocumentLanguage } from "../utilis/shared";
+import { loginTokenReceive } from "../store/actions/auth";
 
 export function Routes() {
-  const isAuthorized = useSelector(({ auth }) => auth.token);
-  const langgggg = useSelector(({ lang }) => lang);
-
   const dispatch = useDispatch();
+  const isAuthorized = useSelector(({ auth }) => auth.token);
 
   useEffect(() => {
-    dispatch(loginReceive(localStorage.getItem("token") || null));
-     }, [dispatch]);
+    dispatch(loginTokenReceive(localStorage.getItem("token") || null));
+  }, [dispatch]);
 
   return (
     <Switch>

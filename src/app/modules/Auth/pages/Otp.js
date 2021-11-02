@@ -8,6 +8,7 @@ import store from "../../../../store";
 import {
   getTokkenRequest,
   loginRequest,
+  loginTokenRequest,
   resendVerficationCodeRequest,
 } from "../../../../store/actions/auth";
 import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
@@ -30,7 +31,7 @@ const Otp = (props) => {
       .required()
       .min(4),
   });
-  const end_date = localStorage.getItem("end_date") // || from store;
+  const end_date = localStorage.getItem("end_date"); // || from store;
 
   setInterval(() => {
     if (end_date) {
@@ -75,7 +76,9 @@ const Otp = (props) => {
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
       setTimeout(() => {
-        store.dispatch(loginRequest(values));
+        store.dispatch(
+          loginTokenRequest({ email: "admin@monshaat.com", password: "root" })
+        );
       }, 1000);
     },
   });

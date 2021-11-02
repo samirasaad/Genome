@@ -19,7 +19,7 @@ import {
 } from "../../../../utilis/constants";
 
 const initialValues = {
-  userName: "",
+  email: "",
   password: "",
 };
 
@@ -27,7 +27,7 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
 
   const LoginSchema = Yup.object().shape({
-    userName: Yup.string()
+    email: Yup.string()
       // .matches(
       //   EMPLOYEE_ID_PATTERN,
       //   "should contains english letters and numbers only"
@@ -97,15 +97,15 @@ const Login = (props) => {
               isRequired: true,
               inputClasses: "form-control form-control-solid h-auto py-3 px-5",
               placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
-              name: "userName",
-              id: "userName",
-              type: "userName",
+              name: "email",
+              id: "email",
+              type: "email",
             }}
             label={{
               labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
               labelClasses: "mb-2",
             }}
-            {...formik.getFieldProps("userName")}
+            {...formik.getFieldProps("email")}
           />
 
           <InputField

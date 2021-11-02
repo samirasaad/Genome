@@ -14,7 +14,7 @@ import UserAvatar from "../UserAvatar/UserAvatar";
 import "./DropDown.scss";
 import history from "../../../utilis/history";
 import { useDispatch } from "react-redux";
-import { loginReceive } from "../../../store/actions/auth";
+import { loginReceive, loginTokenReceive } from "../../../store/actions/auth";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -72,9 +72,9 @@ export default function CustomizedMenus() {
   };
 
   const handleLogout = () => {
-    localStorage.remove('token');
+    localStorage.removeItem("token");
     history.push("/auth/login");
-    dispatch(loginReceive(localStorage.getItem("token") || null));
+    dispatch(loginTokenReceive(localStorage.getItem("token") || null));
   };
 
   return (

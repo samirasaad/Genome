@@ -33,20 +33,20 @@ export function AuthPage() {
         <div className="d-flex h-100 justify-content-center align-items-center">
           <div className=" auth-content row" id="kt_login">
             <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
-                <Switch>
-                  <ContentRoute path="/auth/login" component={Login} />
-                  <ContentRoute path="/auth/otp" component={Otp} />
-                  <ContentRoute
-                    path="/auth/registration"
-                    component={Registration}
-                  />
-                  <ContentRoute
-                    path="/auth/forgot-password"
-                    component={ForgotPassword}
-                  />
-                  <Redirect from="/auth" exact={true} to="/auth/login" />
-                  <Redirect to="/auth/login" />
-                </Switch>
+              <Switch>
+                <ContentRoute path="/auth/login" component={Login} />
+                <ContentRoute path="/auth/otp/:userName" component={Otp} />
+                <ContentRoute
+                  path="/auth/registration"
+                  component={Registration}
+                />
+                <ContentRoute
+                  path="/auth/forgot-password"
+                  component={ForgotPassword}
+                />
+                <Redirect from="/auth" exact={true} to="/auth/login" />
+                <Redirect to="/auth/login" />
+              </Switch>
             </div>
             <div className="col-lg-6 auth-aside login-aside d-lg-flex d-none flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10"></div>
           </div>
