@@ -5,15 +5,21 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
 import store from "../../../../store";
-import { getTokkenRequest, loginRequest } from "../../../../store/actions/auth";
+import {
+  getTokkenRequest,
+  loginRequest,
+  resendVerficationCodeRequest,
+} from "../../../../store/actions/auth";
 import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 import Btn from "../../../components/shared/Btn/Btn";
 import CountdownTimer from "../../../components/shared/CountdownTimer/countdownTimer";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
 import { darkLogo, mobileLock } from "./../../../../utilis/images";
+import { useDispatch } from "react-redux";
 
 const Otp = (props) => {
+  const disaptch = useDispatch();
   const [loading, setLoading] = useState(false);
   let [seconds, setSeconds] = useState(0);
   const initialValues = {
@@ -24,7 +30,7 @@ const Otp = (props) => {
       .required()
       .min(4),
   });
-  const end_date = localStorage.getItem("end_date") || 1635874200;
+  const end_date = localStorage.getItem("end_date") // || from store;
 
   setInterval(() => {
     if (end_date) {
@@ -55,6 +61,10 @@ const Otp = (props) => {
     }
 
     return "";
+  };
+
+  const handleResend = () => {
+    disaptch(resendVerficationCodeRequest({ username: "test" }));
   };
 
   const formik = useFormik({
@@ -99,6 +109,7 @@ const Otp = (props) => {
                   ? "text-info cursor-pointer"
                   : "text-muted  no-pointer-events"
               }`}
+              onClick={handleResend}
             >
               <FormattedMessage id="AUTH.GENERAL.SUBMIT_RESEND" />
             </p>
