@@ -1,30 +1,33 @@
 import React, { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
-import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
 import * as Yup from "yup";
-import { injectIntl } from "react-intl";
-import * as auth from "../_redux/authRedux";
-import { requestPassword } from "../_redux/authCrud";
+import { loginRequest } from "../../../../store/actions/auth";
+import store from "../../../../store";
+import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
+import Btn from "../../../components/shared/Btn/Btn";
+import Spinner from "./../../../components/shared/Spinner/Spinner";
+import InputField from "../../../components/shared/InputField/InputField";
+import { darkLogo } from "./../../../../utilis/images";
 
 const initialValues = {
-  email: "",
+  userName: "",
 };
 
-function ForgotPassword(props) {
-  const { intl } = props;
-  const [isRequested, setIsRequested] = useState(false);
-  const ForgotPasswordSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Wrong email format")
-      .min(3, "Minimum 3 symbols")
-      .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+const ForgotPassword = (props) => {
+  const [loading, setLoading] = useState(false);
+
+  const LoginSchema = Yup.object().shape({
+    userName: Yup.string().required(),
   });
+
+  const enableLoading = () => {
+    setLoading(true);
+  };
+
+  const disableLoading = () => {
+    setLoading(false);
+  };
 
   const getInputClasses = (fieldname) => {
     if (formik.touched[fieldname] && formik.errors[fieldname]) {
@@ -40,84 +43,68 @@ function ForgotPassword(props) {
 
   const formik = useFormik({
     initialValues,
-    validationSchema: ForgotPasswordSchema,
+    validationSchema: LoginSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values, { setStatus, setSubmitting }) => {
-      requestPassword(values.email)
-        .then(() => setIsRequested(true))
-        .catch(() => {
-          setIsRequested(false);
-          setSubmitting(false);
-          setStatus(
-            intl.formatMessage(
-              { id: "AUTH.VALIDATION.NOT_FOUND" },
-              { name: values.email }
-            )
-          );
-        });
+      enableLoading();
+      setTimeout(() => {
+        store.dispatch(loginRequest(values));
+      }, 1000);
     },
   });
 
   return (
-    <>
-      {isRequested && <Redirect to="/auth" />}
-      {!isRequested && (
-        <div className="login-form login-forgot" style={{ display: "block" }}>
-          <div className="text-center mb-10 mb-lg-20">
-            <h3 className="font-size-h1">Forgotten Password ?</h3>
-            <div className="text-muted font-weight-bold">
-              Enter your email to reset your password
-            </div>
-          </div>
-          <form
-            onSubmit={formik.handleSubmit}
-            className="form fv-plugins-bootstrap fv-plugins-framework animated animate__animated animate__backInUp"
-          >
-            {formik.status && (
-              <div className="mb-10 alert alert-custom alert-light-danger alert-dismissible">
-                <div className="alert-text font-weight-bold">
-                  {formik.status}
-                </div>
-              </div>
-            )}
-            <div className="form-group fv-plugins-icon-container">
-              <input
-                type="email"
-                className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                  "email"
-                )}`}
-                name="email"
-                {...formik.getFieldProps("email")}
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <div className="fv-plugins-message-container">
-                  <div className="fv-help-block">{formik.errors.email}</div>
-                </div>
-              ) : null}
-            </div>
-            <div className="form-group d-flex flex-wrap flex-center">
-              <button
-                id="kt_login_forgot_submit"
-                type="submit"
-                className="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4"
-                disabled={formik.isSubmitting}
-              >
-                Submit
-              </button>
-              <Link to="/auth">
-                <button
-                  type="button"
-                  id="kt_login_forgot_cancel"
-                  className="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-4"
-                >
-                  Cancel
-                </button>
-              </Link>
-            </div>
-          </form>
+    <div className="h-100 d-flex align-items-center justify-content-center">
+      <div className="login-form w-75 login-signin" id="kt_login_signin_form">
+        <div className="text-center mb-10 ">
+          <img src={darkLogo} alt="logo" className="logo" />
+          <LanguageSelectorDropdown />
         </div>
-      )}
-    </>
+        <form
+          onSubmit={formik.handleSubmit}
+          className="form fv-plugins-bootstrap fv-plugins-framework"
+        >
+          <p className="bold-font text-center mb-3">
+            <FormattedMessage id="AUTH.FORGOT.TITLE" />
+          </p>
+          <p className="small text-center semiBold-font">
+            <FormattedMessage id="AUTH.FORGOT.HINT" />
+          </p>
+          <InputField
+            parentClasses="mt-10"
+            input={{
+              isRequired: true,
+              inputClasses: "form-control form-control-solid h-auto py-3 px-5",
+              placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
+              name: "userName",
+              id: "userName",
+              type: "userName",
+            }}
+            label={{
+              labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
+              labelClasses: "mb-2",
+            }}
+            {...formik.getFieldProps("userName")}
+          />
+          <Btn
+            disabled={loading}
+            content={
+              <>
+                {loading ? (
+                  <Spinner className="spinner-white" />
+                ) : (
+                  <FormattedMessage id="AUTH.GENERAL.SUBMIT_SEND" />
+                )}
+              </>
+            }
+            type="text"
+            className={`primary-button w-100 py-3 mt-7 ${loading && "py-7"}`}
+          />
+        </form>
+      </div>
+    </div>
   );
-}
+};
 
-export default injectIntl(connect(null, auth.actions)(ForgotPassword));
+export default ForgotPassword;
