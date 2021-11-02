@@ -19,28 +19,15 @@ import {
 } from "../../../../utilis/constants";
 
 const initialValues = {
-  email: "",
+  userName: "",
   password: "",
 };
 
-const Login = (props) => {
+const Otp = (props) => {
   const [loading, setLoading] = useState(false);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string()
-      // .matches(
-      //   EMPLOYEE_ID_PATTERN,
-      //   "should contains english letters and numbers only"
-      // )
-      // .max(50, "max 50 char")
-      .required(),
-    password: Yup.string()
-      // .min(8, "Minimum 8 char")
-      // .matches(
-      //   PASSWORD_PATTERN,
-      //   "should contain numbers, letters and special chars "
-      // )
-      .required(),
+    userName: Yup.string().required(),
   });
 
   const enableLoading = () => {
@@ -90,49 +77,20 @@ const Login = (props) => {
           <FormattedMessage id="AUTH.LOGIN.TITLE" />
         </p>
         <InputField
-          // error={formik.errors.userName}
-          // error={formik.touched.userName && formik.errors.userName}
           input={{
             isRequired: true,
             inputClasses: "form-control form-control-solid h-auto py-3 px-5",
             placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
-            name: "email",
-            id: "email",
-            type: "email",
+            name: "userName",
+            id: "userName",
+            type: "userName",
           }}
           label={{
             labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
             labelClasses: "mb-2",
           }}
-          {...formik.getFieldProps("email")}
+          {...formik.getFieldProps("userName")}
         />
-
-        <InputField
-          // error={formik.errors.password}
-          // error={formik.touched.password && formik.errors.password}
-          parentClasses="mb-2"
-          eyeId="login-password-eye"
-          input={{
-            isRequired: true,
-            inputClasses: "form-control form-control-solid h-auto py-3 px-5",
-            name: "password",
-            id: "password",
-            type: "password",
-          }}
-          label={{
-            labelText: <FormattedMessage id="AUTH.LOGIN.PASSWORD" />,
-            labelClasses: "mb-2",
-          }}
-          {...formik.getFieldProps("password")}
-        />
-
-        <Link
-          to="/auth/forgot-password"
-          className="forgot-password text-hover-primary my-3 mr-2"
-          id="kt_login_forgot"
-        >
-          <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
-        </Link>
         <Btn
           disabled={loading}
           content={
@@ -140,7 +98,7 @@ const Login = (props) => {
               {loading ? (
                 <Spinner className="spinner-white" />
               ) : (
-                <FormattedMessage id="AUTH.LOGIN.BUTTON" />
+                <FormattedMessage id="AUTH.GENERAL.SEND" />
               )}
             </>
           }
@@ -152,4 +110,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Otp;

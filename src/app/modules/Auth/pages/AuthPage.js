@@ -8,6 +8,8 @@ import Registration from "./Registration";
 import ForgotPassword from "./ForgotPassword";
 import "../../../../_metronic/_assets/sass/pages/login/classic/login-1.scss";
 import "./AuthPage.scss";
+import Otp from "./Otp";
+import { useSelector } from "react-redux";
 // import test from '../../../../_metronic/_assets/sass/layout/_rtl.scss'
 
 export function AuthPage() {
@@ -25,6 +27,8 @@ export function AuthPage() {
       ? "../../../../_metronic/_assets/sass/layout/_rtl.scss"
       : "./../../../../sass/style.react.css");
   }, []);
+  const isAuthorized = useSelector(({ auth }) => auth.token);
+  const hasOtpCode = useSelector(({ auth }) => auth.otpCode);
 
   return (
     <>
@@ -35,6 +39,7 @@ export function AuthPage() {
               <div className="h-100 d-flex align-items-center justify-content-center">
                 <Switch>
                   <ContentRoute path="/auth/login" component={Login} />
+                  <ContentRoute path="/auth/otp" component={Otp} />
                   <ContentRoute
                     path="/auth/registration"
                     component={Registration}
@@ -43,8 +48,24 @@ export function AuthPage() {
                     path="/auth/forgot-password"
                     component={ForgotPassword}
                   />
-                  <Redirect from="/auth" exact={true} to="/auth/login" />
-                  <Redirect to="/auth/login" />
+
+                  {/* <Redirect from="/auth" exact={true} to="/auth/login" /> */}
+                  {console.log(
+                    "login",
+                    !hasOtpCode || !localStorage.getItem("otpCode")
+                  )}
+                  {console.log(
+                    "otp",
+                    hasOtpCode || localStorage.getItem("otpCode")
+                  )}
+
+                  {hasOtpCode || localStorage.getItem("otpCode") ? (
+                    <Redirect to="/auth/otp" />
+                  ) : (
+                    (!hasOtpCode || !localStorage.getItem("otpCode")) && (
+                      <Redirect to="/auth/login" />
+                    )
+                  )}
                 </Switch>
               </div>
             </div>

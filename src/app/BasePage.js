@@ -4,6 +4,7 @@ import { LayoutSplashScreen, ContentRoute } from "../_metronic/layout";
 import { BuilderPage } from "./pages/BuilderPage";
 import { MyPage } from "./pages/MyPage";
 import { DashboardPage } from "./pages/DashboardPage";
+import Otp from "./modules/Auth/pages/Otp";
 
 const GoogleMaterialPage = lazy(() =>
   import("./modules/GoogleMaterialExamples/GoogleMaterialPage")
@@ -28,15 +29,14 @@ export default function BasePage() {
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
         <Redirect exact from="/" to="/dashboard" />
-        {
-          /* Redirect from root URL to /dashboard. */
-        }
-        <ContentRoute path="/dashboard" component={DashboardPage} exact/>
+        {/* Redirect from root URL to /dashboard. */}
+        <ContentRoute path="/dashboard" component={DashboardPage} exact />
         <ContentRoute path="/builder" component={BuilderPage} />
         <ContentRoute path="/my-page" component={MyPage} />
         <Route path="/google-material" component={GoogleMaterialPage} />
         <Route path="/react-bootstrap" component={ReactBootstrapPage} />
         <Route path="/user-profile" component={UserProfilepage} />
+        {/* <ContentRoute path="/auth/otp" component={Otp} /> */}
         <Redirect to="error/error-v1" />
       </Switch>
     </Suspense>

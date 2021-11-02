@@ -17,21 +17,31 @@ import store from "../store";
 import { updateDocumentLanguage } from "../utilis/shared";
 
 export function Routes() {
-  const isAuthorized = useSelector(({ auth }) => auth.token);
+  const isAuthorized = useSelector(({ auth }) => auth.token || false);
+  const hasOtpCode = useSelector(({ auth }) => auth.otpCode);
+
   const langgggg = useSelector(({ lang }) => lang);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loginReceive(localStorage.getItem("token") || null));
-     }, [dispatch]);
+    dispatch(
+      loginReceive({
+        token: localStorage.getItem("token") || null,
+        otpCode: localStorage.getItem("otpCode") || null,
+        userName: localStorage.getItem("userName") || null,
+      })
+    );
+  }, [dispatch]);
+
+  console.log("isAuthorized", isAuthorized);
 
   return (
     <Switch>
       {!isAuthorized ? (
         /*Render auth page when user at `/auth` and not authorized.*/
         <Route>
-          <AuthPage authPageName={window.location.pathname.split("/")[2]} />
+          <AuthPage />
         </Route>
       ) : (
         /*Otherwise redirect to root page (`/`)*/
@@ -43,7 +53,10 @@ export function Routes() {
 
       {!isAuthorized ? (
         /*Redirect to `/auth` when user is not authorized*/
-        <Redirect to="/auth/login" />
+        // <Redirect to="/auth/login" />
+        <Route>
+          <AuthPage />
+        </Route>
       ) : (
         <Layout>
           <BasePage />
