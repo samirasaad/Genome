@@ -15,9 +15,10 @@ import {
 } from "../actions/auth";
 
 // LOGIN OTP
-export function* loginSaga(action) {
+export function* loginSaga({ payload }) {
+  //requesting otp in login
   try {
-    const response = yield call(loginApi, action.payload);
+    const response = yield call(loginApi, payload);
     // localStorage.setItem(
     //   "persist:v713-demo1-auth",
     //   JSON.stringify({
@@ -29,7 +30,7 @@ export function* loginSaga(action) {
 
     // yield put(loginReceive(response.data.data.access_token)); //otp code &&  end_date
     // localStorage.setItem("token", response.data.data.access_token); //otp code &&  end_date
-    History.push(`/auth/otp/${action.payload.email}`);
+    History.push(`/auth/otp/${payload.username}/${payload.lastLoation}`);
     window.location.reload();
   } catch (err) {
     console.log(err);
@@ -37,12 +38,15 @@ export function* loginSaga(action) {
 }
 
 // RESEND VERIFICATION CODE
-export function* resendVerficationCodeSaga(action) {
+export function* resendVerficationCodeSaga({ payload }) {
   try {
-    const response = yield call(resendVerficationCodeApi, action.payload);
+    const response = yield call(resendVerficationCodeApi, payload);
     localStorage.setItem("otpCode", JSON.stringify(response));
     yield put(resendVerficationCodeReceive(response.data)); //otpCode && end_date
-    // History.push("/dashboard");
+    if (payload.redirectToOtp) {
+      History.push(`/auth/otp/${payload.username}/${payload.lastLoation}`);
+      window.location.reload();
+    }
   } catch (err) {
     console.log(err);
   }

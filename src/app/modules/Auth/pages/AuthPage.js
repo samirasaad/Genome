@@ -9,6 +9,7 @@ import ForgotPassword from "./ForgotPassword";
 import "../../../../_metronic/_assets/sass/pages/login/classic/login-1.scss";
 import "./AuthPage.scss";
 import Otp from "./Otp";
+import ResetPassword from "./ResetPassword";
 // import test from '../../../../_metronic/_assets/sass/layout/_rtl.scss'
 
 export function AuthPage() {
@@ -35,7 +36,11 @@ export function AuthPage() {
             <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
               <Switch>
                 <ContentRoute path="/auth/login" component={Login} />
-                <ContentRoute path="/auth/otp/:userName" component={Otp} />
+                <ContentRoute path="/auth/otp/:userName/:lastLocation" component={Otp} />
+                <ContentRoute
+                  path="/auth/reset-password/:userName/:otpCode"
+                  component={ResetPassword}
+                />
                 <ContentRoute
                   path="/auth/registration"
                   component={Registration}

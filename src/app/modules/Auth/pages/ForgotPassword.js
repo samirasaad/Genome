@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { loginRequest } from "../../../../store/actions/auth";
+import {
+  resendVerficationCodeReceive,
+  resendVerficationCodeRequest,
+} from "../../../../store/actions/auth";
 import store from "../../../../store";
 import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 import Btn from "../../../components/shared/Btn/Btn";
@@ -49,7 +52,13 @@ const ForgotPassword = (props) => {
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
       setTimeout(() => {
-        store.dispatch(loginRequest(values));
+        store.dispatch(
+          resendVerficationCodeRequest({
+            username: values.userName,
+            redirectToOtp: true,
+            lastLoation: "resetting",
+          })
+        );
       }, 1000);
     },
   });

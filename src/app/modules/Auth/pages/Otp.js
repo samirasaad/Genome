@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Link, Redirect, useParams, withRouter } from "react-router-dom";
 import moment from "moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 
 const Otp = (props) => {
   const disaptch = useDispatch();
+  const { lastLocation } = useParams();
   const [loading, setLoading] = useState(false);
   let [seconds, setSeconds] = useState(0);
   const initialValues = {
@@ -65,7 +66,9 @@ const Otp = (props) => {
   };
 
   const handleResend = () => {
-    disaptch(resendVerficationCodeRequest({ username: "test" }));
+    disaptch(
+      resendVerficationCodeRequest({ username: "test", redirectToOtp: false })
+    );
   };
 
   const formik = useFormik({
@@ -76,9 +79,13 @@ const Otp = (props) => {
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
       setTimeout(() => {
-        store.dispatch(
-          loginTokenRequest({ email: "admin@monshaat.com", password: "root" })
-        );
+        if (lastLocation === "login") {
+          store.dispatch(
+            loginTokenRequest({ email: "admin@monshaat.com", password: "root" })
+          );
+        } else if (lastLocation === "resetting") {
+          console.log("forget password api");
+        }
       }, 1000);
     },
   });
