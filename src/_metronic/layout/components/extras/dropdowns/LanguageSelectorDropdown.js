@@ -1,22 +1,18 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 import React from "react";
-import clsx from "clsx";
 import { Dropdown } from "react-bootstrap";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { toAbsoluteUrl } from "../../../../_helpers";
-import { useLang, toggleLanguage } from "../../../../i18n";
+import { toggleLanguage } from "../../../../i18n";
 import { DropdownTopbarItemToggler } from "../../../../_partials/dropdowns";
+import Toggler from "../../../../../app/components/shared/Toggler/Toggler";
 import { I18N_CONFIG_KEY } from "../../../../../utilis/constants";
-import { useIntl } from "react-intl";
-import { useSelector } from "react-redux";
 
 export function LanguageSelectorDropdown() {
-  const intl = useIntl();
-  const lang = useLang(); //user machine language
-  const storeLanguage = useSelector(({ lang }) => lang);
+  const [isAr, setIsAr] = React.useState(
+    JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang === "ar"
+  );
 
   return (
-    <Dropdown drop="down" alignRight>
+    <Dropdown className="w-75  pt-10 mx-5 ">
       <Dropdown.Toggle
         as={DropdownTopbarItemToggler}
         id="dropdown-toggle-my-cart"
@@ -30,41 +26,10 @@ export function LanguageSelectorDropdown() {
           )
         }
       >
-        <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-          {/* <div>
-              {storeLanguage === "en" ? <span>ع</span> : <span>En</span>}
-            </div> */}
-          <div>{intl.formatMessage({ id: "HEADER.LANGUAGE" })}</div>
-          {/* <img
-              className="h-25px w-25px rounded"
-              src={currentLanguage.flag}
-              alt={currentLanguage.name}
-            /> */}
+        <div className="btn btn-icon  btn-lg mr-1">
+          <Toggler isChecked={isAr} />
         </div>
       </Dropdown.Toggle>
-      <Dropdown.Menu className="p-0 m-0 dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
-        {/* <ul className="navi navi-hover py-4"> */}
-        {/* {languages.map((language) => (
-            <li
-              key={language.lang}
-              className={clsx("navi-item", {
-                active: language.lang === currentLanguage.lang,
-              })}
-            >
-              <a
-                href="#"
-                onClick={() => toggleLanguage(language.lang)}
-                className="navi-link"
-              >
-                <span className="symbol symbol-20 mr-3">
-                  <img src={language.flag} alt={language.name} />
-                </span>
-                <span className="navi-text">{language.name}</span>
-              </a>
-            </li>
-          ))} */}
-        {/* </ul> */}
-      </Dropdown.Menu>
     </Dropdown>
   );
 }

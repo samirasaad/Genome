@@ -10,6 +10,7 @@ import "../../../../_metronic/_assets/sass/pages/login/classic/login-1.scss";
 import "./AuthPage.scss";
 import Otp from "./Otp";
 import ResetPassword from "./ResetPassword";
+import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 // import test from '../../../../_metronic/_assets/sass/layout/_rtl.scss'
 
 export function AuthPage() {
@@ -33,7 +34,8 @@ export function AuthPage() {
       <section className="auth-wrapper primary-gredient d-flex flex-column flex-root">
         <div className="d-flex h-100 justify-content-center align-items-center">
           <div className=" auth-content row" id="kt_login">
-            <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
+            <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative pb-7 px-0 overflow-hidden">
+              <LanguageSelectorDropdown />
               <Switch>
                 <ContentRoute path="/auth/login" component={Login} />
                 <ContentRoute

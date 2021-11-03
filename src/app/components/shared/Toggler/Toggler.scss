@@ -1,0 +1,23 @@
+.test {
+  .MuiSwitch-root {
+    width: 100px;
+    height: 50px;
+  }
+  .Mui-checked + .MuiSwitch-track {
+    background-color: #efefef !important;
+  }
+  .Mui-checked {
+    transform: translateX(54px) !important;
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+  [class$="switchBase"]:hover {
+    background-color: transparent !important;
+  }
+  .MuiSwitch-track {
+    width: 83px;
+    height: 40px;
+    border-radius: 28px !important;
+  }
+}

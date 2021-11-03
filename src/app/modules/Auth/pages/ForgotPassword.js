@@ -68,7 +68,6 @@ const ForgotPassword = (props) => {
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center mb-10 ">
           <img src={darkLogo} alt="logo" className="logo" />
-          <LanguageSelectorDropdown />
         </div>
         <form
           onSubmit={formik.handleSubmit}
@@ -77,7 +76,7 @@ const ForgotPassword = (props) => {
           <p className="bold-font text-center mb-3">
             <FormattedMessage id="AUTH.FORGOT.TITLE" />
           </p>
-          <p className="small text-center semiBold-font">
+          <p className="hint-text text-center semiBold-font">
             <FormattedMessage id="AUTH.FORGOT.HINT" />
           </p>
           <InputField

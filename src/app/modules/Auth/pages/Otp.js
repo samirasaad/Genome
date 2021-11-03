@@ -5,15 +5,11 @@ import moment from "moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
-import store from "../../../../store";
 import {
   forgetPasswordRequest,
-  getTokkenRequest,
-  loginRequest,
   loginTokenRequest,
   resendVerficationCodeRequest,
 } from "../../../../store/actions/auth";
-import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 import Btn from "../../../components/shared/Btn/Btn";
 import CountdownTimer from "../../../components/shared/CountdownTimer/countdownTimer";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
@@ -101,7 +97,6 @@ const Otp = (props) => {
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center ">
           <img src={darkLogo} alt="logo" className="logo" />
-          <LanguageSelectorDropdown />
         </div>
         <div className="d-flex justify-content-center my-6">
           <img src={mobileLock} alt="lock" />
