@@ -33,4 +33,36 @@ const loginTokenApi = async ({ username, email, password, otp_code }) => {
   );
 };
 
-export { loginApi, resendVerficationCodeApi, loginTokenApi };
+// FORGET PASSWORD
+const forgetPasswordApi = async ({ username, otp_code }) => {
+  return await axiosInstance.post(
+    `https://smea-pc.ibtikar.sa/api/authentication/admin/login`,
+    {
+      email: "admin@monshaat.com",
+      password: "root",
+      // username,
+      // otp_code,
+    }
+  );
+};
+
+// RESET PASSWORD
+const resetPasswordApi = async ({ username, otp_code }) => {
+  return await axiosInstance.post(
+    `https://smea-pc.ibtikar.sa/api/authentication/admin/login`,
+    {
+      email: "admin@monshaat.com",
+      password: "root",
+      // username,
+      // otp_code,
+    }
+  );
+};
+
+export {
+  loginApi,
+  resendVerficationCodeApi,
+  loginTokenApi,
+  forgetPasswordApi,
+  resetPasswordApi,
+};

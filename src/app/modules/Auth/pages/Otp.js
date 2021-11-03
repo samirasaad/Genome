@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, Redirect, useParams, withRouter } from "react-router-dom";
 import moment from "moment";
 import { useFormik } from "formik";
@@ -6,6 +7,7 @@ import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
 import store from "../../../../store";
 import {
+  forgetPasswordRequest,
   getTokkenRequest,
   loginRequest,
   loginTokenRequest,
@@ -17,11 +19,10 @@ import CountdownTimer from "../../../components/shared/CountdownTimer/countdownT
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
 import { darkLogo, mobileLock } from "./../../../../utilis/images";
-import { useDispatch } from "react-redux";
 
 const Otp = (props) => {
-  const disaptch = useDispatch();
-  const { lastLocation } = useParams();
+  const dispatch = useDispatch();
+  const { lastLocation, userName } = useParams();
   const [loading, setLoading] = useState(false);
   let [seconds, setSeconds] = useState(0);
   const initialValues = {
@@ -66,7 +67,7 @@ const Otp = (props) => {
   };
 
   const handleResend = () => {
-    disaptch(
+    dispatch(
       resendVerficationCodeRequest({ username: "test", redirectToOtp: false })
     );
   };
@@ -80,11 +81,16 @@ const Otp = (props) => {
       enableLoading();
       setTimeout(() => {
         if (lastLocation === "login") {
-          store.dispatch(
-            loginTokenRequest({ email: "admin@monshaat.com", password: "root" })
+          dispatch(
+            loginTokenRequest({ username: userName, otp_code: values.otpCode })
           );
         } else if (lastLocation === "resetting") {
-          console.log("forget password api");
+          dispatch(
+            forgetPasswordRequest({
+              username: userName,
+              otp_code: values.otpCode,
+            })
+          );
         }
       }, 1000);
     },

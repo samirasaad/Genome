@@ -36,9 +36,12 @@ export function AuthPage() {
             <div className=" col-lg-6 auth-form flex-row-fluid d-flex flex-column position-relative py-7 px-0 overflow-hidden">
               <Switch>
                 <ContentRoute path="/auth/login" component={Login} />
-                <ContentRoute path="/auth/otp/:userName/:lastLocation" component={Otp} />
                 <ContentRoute
-                  path="/auth/reset-password/:userName/:otpCode"
+                  path="/auth/otp/:userName/:lastLocation"
+                  component={Otp}
+                />
+                <ContentRoute
+                  path="/auth/reset-password/:resetToken"
                   component={ResetPassword}
                 />
                 <ContentRoute

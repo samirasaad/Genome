@@ -1,8 +1,10 @@
 import { call, put } from "redux-saga/effects";
 import {
+  forgetPasswordApi,
   loginApi,
   loginTokenApi,
   resendVerficationCodeApi,
+  resetPasswordApi,
 } from "../../network/apis/auth";
 // import { dispatchSnackbarError } from "../../utils/Shared";
 import { takeLatest } from "redux-saga/effects";
@@ -64,6 +66,33 @@ export function* loginTokenSaga(action) {
   }
 }
 
+// FORGET PASSWORD
+export function* forgetPasswordSaga({ payload }) {
+  try {
+    const response = yield call(forgetPasswordApi, payload);
+    // localStorage.setItem("token", response.data.data.access_token); //token
+    // yield put(loginTokenReceive(response.data.data.access_token)); //token
+    History.push(`/auth/reset-password/testToken`);
+    window.location.reload();
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// FORGET PASSWORD
+export function* resetPasswordSaga({ payload }) {
+  try {
+    const response = yield call(resetPasswordApi, payload);
+    // localStorage.setItem("token", response.data.data.access_token); //token
+    // yield put(loginTokenReceive(response.data.data.access_token)); //token
+    // History.push(`/auth/reset-password/${payload.username}/${payload.otpCode}`);
+    // window.location.reload();
+    // redirect to 
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export function* authSaga() {
   yield takeLatest(TYPES.GET_TOKEN_REQUEST, loginSaga);
   yield takeLatest(
@@ -71,4 +100,6 @@ export function* authSaga() {
     resendVerficationCodeSaga
   );
   yield takeLatest(TYPES.GET_LOGIN_TOKEN_REQUEST, loginTokenSaga);
+  yield takeLatest(TYPES.FORGET_PASSWORD_REQUEST, forgetPasswordSaga);
+  yield takeLatest(TYPES.RESET_PASSWORD_REQUEST, resetPasswordSaga);
 }

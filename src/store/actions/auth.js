@@ -43,3 +43,29 @@ export const loginTokenReceive = (payload) => ({
   type: types.GET_LOGIN_TOKEN_RECEIVE,
   payload,
 });
+
+// FORGET PASSWORD
+export const forgetPasswordRequest = (payload) => {
+  return {
+    type: types.FORGET_PASSWORD_REQUEST,
+    payload,
+  };
+};
+
+export const forgetPasswordReceive = (payload) => ({
+  type: types.FORGET_PASSWORD_RECEIVE,
+  payload,
+});
+
+// RESET PASSWORD
+export const resetPasswordRequest = (payload) => {
+  return {
+    type: types.RESET_PASSWORD_REQUEST,
+    payload,
+  };
+};
+
+export const resetPasswordReceive = (payload) => ({
+  type: types.RESET_PASSWORD_RECEIVE,
+  payload,
+});
