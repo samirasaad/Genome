@@ -12,7 +12,7 @@ export const LanguageToggler = () => {
   );
 
   return (
-    <Dropdown className="w-75 mx-5 pt-6 px-6">
+    <Dropdown className="w-75 pt-4  px-3 toggler-wrapper">
       <Dropdown.Toggle
         as={DropdownTopbarItemToggler}
         id="dropdown-toggle-my-cart"
