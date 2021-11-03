@@ -3,11 +3,9 @@ import { FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
-  resendVerficationCodeRequest,
   resetPasswordRequest,
 } from "../../../../store/actions/auth";
 import store from "../../../../store";
-import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";

@@ -8,7 +8,6 @@ import * as auth from "../_redux/authRedux";
 import { login } from "../_redux/authCrud";
 import { getTokkenRequest, loginRequest } from "../../../../store/actions/auth";
 import store from "../../../../store";
-import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
 import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
@@ -87,7 +86,6 @@ const Login = (props) => {
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center mb-10 ">
           <img src={darkLogo} alt="logo" className="logo" />
-          {/* <LanguageSelectorDropdown /> */}
         </div>
         <form
           onSubmit={formik.handleSubmit}
@@ -97,8 +95,6 @@ const Login = (props) => {
             <FormattedMessage id="AUTH.LOGIN.TITLE" />
           </p>
           <InputField
-            // error={formik.errors.userName}
-            // error={formik.touched.userName && formik.errors.userName}
             input={{
               isRequired: true,
               inputClasses: "form-control form-control-solid h-auto py-3 px-5",
@@ -115,8 +111,6 @@ const Login = (props) => {
           />
 
           <InputField
-            // error={formik.errors.password}
-            // error={formik.touched.password && formik.errors.password}
             parentClasses="mb-2"
             eyeId="login-password-eye"
             input={{

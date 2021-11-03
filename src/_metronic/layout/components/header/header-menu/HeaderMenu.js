@@ -6,7 +6,6 @@ import SVG from "react-inlinesvg";
 import { toAbsoluteUrl, checkIsActive } from "../../../../_helpers";
 import DropDown from "./../../../../../app/components/DropDown/DropDown";
 import { FormattedMessage, useIntl } from "react-intl";
-import { LanguageSelectorDropdown } from "../../extras/dropdowns/LanguageSelectorDropdown";
 
 export function HeaderMenu({ layoutProps, role = "موظفة استقبال" }) {
   const intl = useIntl();
@@ -32,7 +31,7 @@ export function HeaderMenu({ layoutProps, role = "موظفة استقبال" }) 
             {intl.formatMessage({ id: "HOME.HELLO" })}
           </span>
           <div className=" d-md-flex d-block align-items-center">
-            <LanguageSelectorDropdown />
+            {/* <LanguageSelectorDropdown /> */}
             <div className="menu-text d-flex">
               <img src={"ytt"} />
               <p className="mb-0">الاثنين 20 سبتمبر 2021</p>
