@@ -3,8 +3,8 @@ import { FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
-  resendVerficationCodeReceive,
   resendVerficationCodeRequest,
+  resetPasswordRequest,
 } from "../../../../store/actions/auth";
 import store from "../../../../store";
 import { LanguageSelectorDropdown } from "../../../../_metronic/layout/components/extras/dropdowns/LanguageSelectorDropdown";
@@ -13,24 +13,32 @@ import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
 import { darkLogo } from "./../../../../utilis/images";
 import { PASSWORD_PATTERN } from "../../../../utilis/constants";
+import { useParams } from "react-router";
 
-const initialValues = {
-  password: "",
-  confirmPassword: "",
-};
 
 const ResetPassword = (props) => {
   const [loading, setLoading] = useState(false);
+  const {resetToken} = useParams();
+  const initialValues = {
+    password: "",
+    confirmPassword: "",
+  };
 
   const resetPasswordSchema = Yup.object().shape({
     password: Yup.string()
       .required()
-      .matches(PASSWORD_PATTERN)
+      .matches(
+        PASSWORD_PATTERN,
+        "should contain numbers, letters and special chars"
+      )
       .min(8),
-    confirmPassword: Yup.string()
-      .required()
-      .matches(PASSWORD_PATTERN)
-      .min(8),
+    confirmPassword: Yup.string().when("password", {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: Yup.string().oneOf(
+        [Yup.ref("password")],
+        "Both password need to be the same"
+      ),
+    }),
   });
 
   const enableLoading = () => {
@@ -62,9 +70,9 @@ const ResetPassword = (props) => {
       enableLoading();
       setTimeout(() => {
         store.dispatch(
-          resendVerficationCodeRequest({
-            username: values.userName,
-            redirectToReset: true,
+          resetPasswordRequest({
+            token: resetToken,
+            password: values.password,
           })
         );
       }, 1000);
@@ -72,7 +80,7 @@ const ResetPassword = (props) => {
   });
 
   return (
-    <div className="h-100 d-flex align-items-center justify-content-center">
+    <div className="h-100 d-flex align-items-center justify-content-center mx-auto reset-wrapper">
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center mb-10 ">
           <img src={darkLogo} alt="logo" className="logo" />
@@ -82,41 +90,36 @@ const ResetPassword = (props) => {
           onSubmit={formik.handleSubmit}
           className="form fv-plugins-bootstrap fv-plugins-framework"
         >
-          <p className="bold-font text-center mb-3">
-            <FormattedMessage id="AUTH.FORGOT.TITLE" />
-          </p>
-          <p className="small text-center semiBold-font">
-            <FormattedMessage id="AUTH.FORGOT.HINT" />
-          </p>
           <InputField
             parentClasses="mt-10"
+            error={formik.errors.password}
             input={{
               isRequired: true,
               inputClasses: "form-control form-control-solid h-auto py-3 px-5",
-              placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
+              placeholderId: "AUTH.RESET.PASSWORD.PLACEHOLDER",
               name: "password",
               id: "password",
               type: "password",
             }}
             label={{
-              labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
+              labelText: <FormattedMessage id="AUTH.RESET.PASSWORD" />,
               labelClasses: "mb-2",
             }}
             {...formik.getFieldProps("password")}
           />
-
           <InputField
-            parentClasses="mt-10"
+            parentClasses="mb-0"
+            error={formik.errors.confirmPassword}
             input={{
               isRequired: true,
               inputClasses: "form-control form-control-solid h-auto py-3 px-5",
-              placeholderId: "AUTH.LOGIN.USERNAME.PLACEHOLDER",
+              placeholderId: "AUTH.RESET.PASSWORD.PLACEHOLDER",
               name: "confirmPassword",
               id: "confirmPassword",
-              type: "confirmPassword",
+              type: "password",
             }}
             label={{
-              labelText: <FormattedMessage id="AUTH.LOGIN.USERNAME" />,
+              labelText: <FormattedMessage id="AUTH.RESET.CONFIRM" />,
               labelClasses: "mb-2",
             }}
             {...formik.getFieldProps("confirmPassword")}
@@ -128,7 +131,7 @@ const ResetPassword = (props) => {
                 {loading ? (
                   <Spinner className="spinner-white" />
                 ) : (
-                  <FormattedMessage id="AUTH.GENERAL.SUBMIT_SEND" />
+                  <FormattedMessage id="AUTH.RESET.BUTTON" />
                 )}
               </>
             }

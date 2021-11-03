@@ -16,6 +16,17 @@
     margin-left: auto;
     width: 80%;
     height: 82%;
+    .reset-wrapper,
+    .login-wrapper,
+    .otp-wrapper,
+    .forget-wrapper {
+      width: 88%;
+    }
+  }
+  .otp-wrapper {
+    .hint-text {
+      font-size: 0.97rem;
+    }
   }
   .forgot-password {
     color: #b5b5b5;

@@ -97,7 +97,7 @@ const Otp = (props) => {
   });
 
   return (
-    <div className="w-100 m-auto h-100 d-flex align-items-center justify-content-center">
+    <div className="m-auto h-100 d-flex align-items-center justify-content-center mx-auto otp-wrapper">
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center ">
           <img src={darkLogo} alt="logo" className="logo" />
@@ -113,7 +113,7 @@ const Otp = (props) => {
           <p className="bold-font text-center ">
             <FormattedMessage id="AUTH.OTP.TITLE" />
           </p>
-          <p className="text-center small semiBold-font">
+          <p className="hint-text text-center semiBold-font">
             <FormattedMessage id="AUTH.OTP.HINT" />
           </p>
           {/* timer */}

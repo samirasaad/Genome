@@ -64,7 +64,7 @@ const ForgotPassword = (props) => {
   });
 
   return (
-    <div className="h-100 d-flex align-items-center justify-content-center">
+    <div className="h-100 d-flex align-items-center justify-content-center mx-auto forget-wrapper">
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center mb-10 ">
           <img src={darkLogo} alt="logo" className="logo" />
