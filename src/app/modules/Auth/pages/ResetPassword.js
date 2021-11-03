@@ -2,21 +2,24 @@ import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  resetPasswordRequest,
-} from "../../../../store/actions/auth";
+import { setLocale } from "yup";
+
+import { resetPasswordRequest } from "../../../../store/actions/auth";
 import store from "../../../../store";
 import Btn from "../../../components/shared/Btn/Btn";
 import Spinner from "./../../../components/shared/Spinner/Spinner";
 import InputField from "../../../components/shared/InputField/InputField";
 import { darkLogo } from "./../../../../utilis/images";
-import { PASSWORD_PATTERN } from "../../../../utilis/constants";
+import {
+  I18N_CONFIG_KEY,
+  PASSWORD_PATTERN,
+} from "../../../../utilis/constants";
 import { useParams } from "react-router";
-
+import i18n from "i18next";
 
 const ResetPassword = (props) => {
   const [loading, setLoading] = useState(false);
-  const {resetToken} = useParams();
+  const { resetToken } = useParams();
   const initialValues = {
     password: "",
     confirmPassword: "",
@@ -27,14 +30,26 @@ const ResetPassword = (props) => {
       .required()
       .matches(
         PASSWORD_PATTERN,
-        "should contain numbers, letters and special chars"
+        `${JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang}` ===
+          "ar"
+          ? "برجاء إدخال 8 عناصر على الأقل تتضمن حروف وأرقام ورموز"
+          : "Please enter at least 8 characters includes letters, numbers, and special characters"
       )
-      .min(8),
+      .min(
+        8,
+        `${JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang}` ===
+          "ar"
+          ? "برجاء إدخال 8 عناصر على الأقل تتضمن حروف وأرقام ورموز"
+          : "Please enter at least 8 characters includes letters, numbers, and special characters"
+      ),
     confirmPassword: Yup.string().when("password", {
       is: (val) => (val && val.length > 0 ? true : false),
       then: Yup.string().oneOf(
         [Yup.ref("password")],
-        "Both password need to be the same"
+        `${JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang}` ===
+          "ar"
+          ? "كلمة المرور غير متطابقة"
+          : "Unmatched password"
       ),
     }),
   });
@@ -77,6 +92,20 @@ const ResetPassword = (props) => {
     },
   });
 
+  const getErrors = (inputName) => {
+    console.log(formik);
+    if (formik.submitted) {
+      console.log(formik.values[inputName]);
+      // console.log(formik.values[inputName].length < 8 || );
+      if (
+        formik.values[inputName].length < 8 ||
+        formik.values[inputName].test(PASSWORD_PATTERN)
+      ) {
+        return "برجاء إدخال 8 عناصر على الأقل تتضمن حروف وأرقام ورموز";
+      }
+    }
+  };
+
   return (
     <div className="h-100 d-flex align-items-center justify-content-center mx-auto reset-wrapper">
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
@@ -90,6 +119,7 @@ const ResetPassword = (props) => {
           <InputField
             parentClasses="mt-10"
             error={formik.errors.password}
+            // error={getErrors("password")}
             input={{
               isRequired: true,
               inputClasses: "form-control form-control-solid h-auto py-3 px-5",

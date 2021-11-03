@@ -38,10 +38,10 @@ export default function CustomizedSwitches({ handleChange, isChecked }) {
       backgroundColor: "#6a2a53",
       boxShadow: "none",
       top: "9px",
-      left: "9px",
+      left: "8px",
       zIndex: "0",
-      width: "2.1em",
-      height: "2.1em",
+      width: "37px",
+      height: "37px",
       margin: "2px",
       position: "absolute",
       "&:after": {
