@@ -1,11 +1,12 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useLocation } from "react-router";
-import { NavLink } from "react-router-dom";
-import SVG from "react-inlinesvg";
-import { toAbsoluteUrl, checkIsActive } from "../../../../_helpers";
+import { checkIsActive } from "../../../../_helpers";
 import DropDown from "./../../../../../app/components/DropDown/DropDown";
 import { FormattedMessage, useIntl } from "react-intl";
+import { notification, calendar } from "../../../../../utilis/images";
+import { getToday } from "../../../../../utilis/shared";
+import LanguageToggler from "../../extras/dropdowns/LanguageToggler";
 
 export function HeaderMenu({ layoutProps, role = "موظفة استقبال" }) {
   const intl = useIntl();
@@ -26,19 +27,33 @@ export function HeaderMenu({ layoutProps, role = "موظفة استقبال" }) 
             "/dashboard"
           )}`}
         >
-          <span className="menu-text">
+          <h4 className="menu-text semiBold-font mb-md-0 mb-6">
             {/* {intl.formatMessage({ id: "HOME.HELLO" }, { role })} */}
             {intl.formatMessage({ id: "HOME.HELLO" })}
-          </span>
+          </h4>
           <div className=" d-md-flex d-block align-items-center">
-            {/* <LanguageSelectorDropdown /> */}
-            <div className="menu-text d-flex">
-              <img src={"ytt"} />
-              <p className="mb-0">الاثنين 20 سبتمبر 2021</p>
+            <div className="menu-text d-md-flex d-block mx-2">
+              <LanguageToggler className="px-10" />
+              <div className="d-flex justify-content-center align-items-center my-5 my-md-0">
+                <img
+                  src={calendar}
+                  alt="calendar"
+                  className="calendar-icon mx-2"
+                />
+                <p className="mb-0 d-flex justify-content-end">
+                  <span className="today semiBold-font">{getToday()}</span>
+                </p>
+              </div>
             </div>
-            <span className="menu-text">search </span>
-            <span className="menu-text">notifications </span>
-            <div>
+            <div className="d-flex justify-content-center align-items-center">
+              <span className="notification-wrapper mx-9 position-relative">
+                <img
+                  src={notification}
+                  alt="notificatioon"
+                  className="notification-icon"
+                />
+                <div  className='notification-indicator'></div>
+              </span>
               <DropDown />
             </div>
           </div>

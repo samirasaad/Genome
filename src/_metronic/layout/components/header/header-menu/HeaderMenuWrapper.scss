@@ -1,3 +1,32 @@
+.header-menu-wrapper {
+  .calendar-icon {
+    height: 1.6rem;
+    cursor: pointer;
+  }
+  .notification-wrapper {
+    .notification-icon {
+      height: 1.7rem;
+    }
+    .notification-indicator {
+      height: 20px;
+      width: 20px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      right: -7px;
+      font-size: 13px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      font-family: "Cairo-Bold";
+    }
+  }
+  .today {
+    font-size: 0.9rem;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .header-menu-wrapper {
     width: 100%;

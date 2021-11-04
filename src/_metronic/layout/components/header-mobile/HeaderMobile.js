@@ -4,6 +4,7 @@ import objectPath from "object-path";
 import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../_helpers";
 import {useHtmlClassService} from "../../_core/MetronicLayout";
+import { lightLogo } from "../../../../utilis/images";
 
 export function HeaderMobile() {
   const uiService = useHtmlClassService();
@@ -29,7 +30,7 @@ export function HeaderMobile() {
         >
           {/*begin::Logo*/}
           <Link to="/">
-            <img alt="logo" src={layoutProps.headerLogo}/>
+            <img alt="logo" src={lightLogo} className='mobile-logo'/>
           </Link>
           {/*end::Logo*/}
 
@@ -56,14 +57,14 @@ export function HeaderMobile() {
             )}
 
             {/*begin::Topbar Mobile Toggle*/}
-            <button
+            {/* <button
                 className="btn btn-hover-text-primary p-0 ml-2"
                 id="kt_header_mobile_topbar_toggle"
             >
               <span className="svg-icon svg-icon-xl">
                 <SVG src={toAbsoluteUrl("/media/svg/icons/General/User.svg")} />
               </span>
-            </button>
+            </button> */}
             {/*end::Topbar Mobile Toggle*/}
           </div>
           {/*end::Toolbar*/}

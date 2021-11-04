@@ -6,13 +6,13 @@ import { DropdownTopbarItemToggler } from "../../../../_partials/dropdowns";
 import Toggler from "../../../../../app/components/shared/Toggler/Toggler";
 import { I18N_CONFIG_KEY } from "../../../../../utilis/constants";
 
-export const LanguageToggler = () => {
+export const LanguageToggler = ({className}) => {
   const [isAr, setIsAr] = React.useState(
     JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang === "ar"
   );
 
   return (
-    <Dropdown className="w-75 pt-4  px-3 toggler-wrapper">
+    <Dropdown className={`${className} px-3 toggler-wrapper`}>
       <Dropdown.Toggle
         as={DropdownTopbarItemToggler}
         id="dropdown-toggle-my-cart"

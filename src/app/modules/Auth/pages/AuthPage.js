@@ -34,7 +34,7 @@ export function AuthPage() {
         <div className="d-flex h-100 justify-content-center align-items-center">
           <div className=" auth-content row" id="kt_login">
             <div className=" col-lg-6 position-relative auth-form flex-row-fluid d-flex flex-column position-relative pb-7 px-0 overflow-hidden">
-              <LanguageToggler />
+              <LanguageToggler  className='pt-4'/>
               <Switch>
                 <ContentRoute path="/auth/login" component={Login} />
                 <ContentRoute

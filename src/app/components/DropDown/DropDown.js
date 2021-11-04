@@ -80,7 +80,7 @@ export default function CustomizedMenus() {
   return (
     <div className="dropdown user-drop-down">
       <button
-        className="d-flex align-items-center  dropdown-toggle"
+        className="d-flex align-items-center px-0 dropdown-toggle"
         type="button"
         id="dropdownMenu2"
         data-bs-toggle="dropdown"
