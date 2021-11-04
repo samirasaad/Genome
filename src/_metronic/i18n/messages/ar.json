@@ -30,7 +30,7 @@
   "AUTH.LOGIN.PASSWORD": "كلمة المرور",
   "AUTH.LOGIN.USERNAME.PLACEHOLDER": "من فضلك أدخل إسم المستخدم",
   "AUTH.OTP.TITLE": "رمز التحقق",
-  "AUTH.OTP.PLACEHOLDER": "أدخل رمز التحقق ",
+  "AUTH.OTP.PLACEHOLDER": "أدخل كود التحقق ",
   "AUTH.OTP.HINT": " من فضلك أدخل رمز التحقق الذى تم إرساله لك في رسالة نصية",
   "AUTH.FORGOT.TITLE": "نسيت كلمة المرور؟",
   "AUTH.FORGOT.HINT": "من فضلك ادخل إسم المستخدم الخاص بك",
