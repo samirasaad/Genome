@@ -83,13 +83,10 @@ export function* forgetPasswordSaga({ payload }) {
 // FORGET PASSWORD
 export function* resetPasswordSaga({ payload }) {
   try {
-    const response = yield call(resetPasswordApi, payload);
+    yield call(resetPasswordApi, payload);
     yield put(resetPasswordReceive(true));
-    // localStorage.setItem("token", response.data.data.access_token); //token
-    // yield put(loginTokenReceive(response.data.data.access_token)); //token
-    // History.push(`/auth/reset-password/${payload.username}/${payload.otpCode}`);
-    // window.location.reload();
-    // redirect to
+    History.push("/auth/login");
+    window.location.reload();
   } catch (err) {
     console.log(err);
   }
