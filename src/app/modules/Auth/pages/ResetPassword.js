@@ -16,18 +16,21 @@ import {
 } from "../../../../utilis/constants";
 import { useParams } from "react-router";
 import i18n from "i18next";
+import ResetSuccessMsg from "../../../components/ResetSuccessMsg/ResetSuccessMsg";
+import { useSelector } from "react-redux";
 
 const ResetPassword = (props) => {
-  const [loading, setLoading] = useState(false);
   const { resetToken } = useParams();
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     password: "",
     confirmPassword: "",
   };
 
+  const showSuccessMsg = useSelector(({ auth }) => auth.showSuccessMsg);
+
   const resetPasswordSchema = Yup.object().shape({
     password: Yup.string()
-      .required()
       .matches(
         PASSWORD_PATTERN,
         `${JSON.parse(localStorage.getItem(I18N_CONFIG_KEY)).selectedLang}` ===
@@ -41,7 +44,8 @@ const ResetPassword = (props) => {
           "ar"
           ? "برجاء إدخال 8 عناصر على الأقل تتضمن حروف وأرقام ورموز"
           : "Please enter at least 8 characters includes letters, numbers, and special characters"
-      ),
+      )
+      .required(),
     confirmPassword: Yup.string().when("password", {
       is: (val) => (val && val.length > 0 ? true : false),
       then: Yup.string().oneOf(
@@ -92,22 +96,8 @@ const ResetPassword = (props) => {
     },
   });
 
-  const getErrors = (inputName) => {
-    console.log(formik);
-    if (formik.submitted) {
-      console.log(formik.values[inputName]);
-      // console.log(formik.values[inputName].length < 8 || );
-      if (
-        formik.values[inputName].length < 8 ||
-        formik.values[inputName].test(PASSWORD_PATTERN)
-      ) {
-        return "برجاء إدخال 8 عناصر على الأقل تتضمن حروف وأرقام ورموز";
-      }
-    }
-  };
-
-  return (
-    <div className="h-100 d-flex align-items-center justify-content-center mx-auto reset-wrapper">
+  const renderResetForm = () => {
+    return (
       <div className="login-form w-75 login-signin" id="kt_login_signin_form">
         <div className="text-center mb-10 ">
           <img src={darkLogo} alt="logo" className="logo" />
@@ -119,7 +109,6 @@ const ResetPassword = (props) => {
           <InputField
             parentClasses="mt-10"
             error={formik.errors.password}
-            // error={getErrors("password")}
             input={{
               isRequired: true,
               inputClasses: "form-control form-control-solid h-auto py-3 px-5",
@@ -162,11 +151,17 @@ const ResetPassword = (props) => {
                 )}
               </>
             }
-            type="text"
+            type="submit"
             className={`primary-button w-100 py-3 mt-7 ${loading && "py-7"}`}
           />
         </form>
       </div>
+    );
+  };
+
+  return (
+    <div className="h-100 d-flex align-items-center justify-content-center mx-auto reset-wrapper">
+      {showSuccessMsg ? <ResetSuccessMsg /> : renderResetForm()}
     </div>
   );
 };

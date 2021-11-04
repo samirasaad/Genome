@@ -99,7 +99,7 @@ const Otp = (props) => {
           <img src={darkLogo} alt="logo" className="logo" />
         </div>
         <div className="d-flex justify-content-center my-6">
-          <img src={mobileLock} alt="lock" className='lock-mobile-icon'/>
+          <img src={mobileLock} alt="lock" className="lock-mobile-icon" />
         </div>
         <form
           onSubmit={formik.handleSubmit}
@@ -150,7 +150,7 @@ const Otp = (props) => {
                 )}
               </>
             }
-            type="text"
+            type="submit"
             className={`primary-button w-100 py-3 mt-0 ${loading && "py-7"}`}
           />
         </form>

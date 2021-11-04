@@ -40,6 +40,7 @@
   "AUTH.RESET.CONFIRM": "تأكيد كلمة المرور الجديدة",
   "AUTH.RESET.BUTTON": "إعادة تعيين كلمة المرور",
   "AUTH.RESET.PASSWORD.PLACEHOLDER": "tE35_*BH",
+  "AUTH.RESET.SUCCESS": "تم تغيير كلمة المرور بنجاح",
   "AUTH.REGISTER.TITLE": "Sign Up",
   "AUTH.REGISTER.DESC": "Enter your details to create your account",
   "AUTH.REGISTER.SUCCESS": "Your account has been successfuly registered.",

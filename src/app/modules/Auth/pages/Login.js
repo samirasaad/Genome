@@ -145,7 +145,7 @@ const Login = (props) => {
                 )}
               </>
             }
-            type="text"
+            type="submit"
             className={`primary-button w-100 py-3 mt-9 ${loading && "py-7"}`}
           />
         </form>

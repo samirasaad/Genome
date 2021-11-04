@@ -102,7 +102,7 @@ const ForgotPassword = (props) => {
                 )}
               </>
             }
-            type="text"
+            type="submit"
             className={`primary-button w-100 py-3 mt-7 ${loading && "py-7"}`}
           />
         </form>

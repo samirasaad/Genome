@@ -35,6 +35,7 @@
   "AUTH.RESET.CONFIRM": "Confirm your new password",
   "AUTH.RESET.BUTTON": "Reset the password",
   "AUTH.RESET.PASSWORD.PLACEHOLDER": "tE35_*BH",
+  "AUTH.RESET.SUCCESS": "The password has been rest AUTH.RESET.SUCCESS",
   "AUTH.REGISTER.TITLE": "Sign Up",
   "AUTH.REGISTER.DESC": "Enter your details to create your account",
   "AUTH.REGISTER.SUCCESS": "Your account has been successfuly registered.",
