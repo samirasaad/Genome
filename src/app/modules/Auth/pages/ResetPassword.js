@@ -15,7 +15,6 @@ import {
   PASSWORD_PATTERN,
 } from "../../../../utilis/constants";
 import { useParams } from "react-router";
-import i18n from "i18next";
 import ResetSuccessMsg from "../../../components/ResetSuccessMsg/ResetSuccessMsg";
 import { useSelector } from "react-redux";
 
